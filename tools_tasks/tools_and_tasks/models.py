@@ -14,6 +14,7 @@ class Bill(models.Model):
     status = models.CharField(verbose_name='Status', max_length=1, choices=status_choices, default='u',
                               help_text='Status of the bill')
     payment_date = models.DateField(verbose_name='Payment by date', null=True, blank=True)
+    construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True)
     amount = models.FloatField(verbose_name='Amount', help_text='Insert amount of the bill')
 
     class Meta:
@@ -51,7 +52,6 @@ class ConstructionObject(models.Model):
                                help_text='Insert address of construction object')
     client = models.ForeignKey(to='Client', on_delete=models.SET_NULL, null=True, blank=True)
     manager = models.ForeignKey(to='Employee', on_delete=models.SET_NULL, null=True, blank=True)
-    bill = models.ForeignKey(to='Bill', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f"{self.address}"
