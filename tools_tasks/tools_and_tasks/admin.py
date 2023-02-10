@@ -28,12 +28,17 @@ class ConstructionObjectInline(admin.TabularInline):
     extra = 0
 
 
+class TaskInline(admin.TabularInline):
+    model = Task
+    extra = 0
+
+
 class ConstructionObjectAdmin(admin.ModelAdmin):
     inlines = [ToolInline, BillInline]
 
 
 class EmployeeAdmin(admin.ModelAdmin):
-    inlines = [ToolInline, ]
+    inlines = [ToolInline, TaskInline, ConstructionObjectInline]
 
 
 class ClientAdmin(admin.ModelAdmin):
