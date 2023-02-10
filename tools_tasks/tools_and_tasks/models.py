@@ -26,7 +26,8 @@ class Bill(models.Model):
 
 
 class Client(models.Model):
-    name = models.CharField(verbose_name='Name', max_length=100, help_text="Insert client's name")
+    title = models.CharField(verbose_name='Title', max_length=100, null=True, blank=True,
+                             help_text="Insert client's title")
     contact_phone = models.CharField(verbose_name='Contact phone', max_length=50,
                                      help_text="Insert client's contact phone number", null=True, blank=True)
     contact_email = models.CharField(verbose_name='Contact email', max_length=100,
@@ -35,7 +36,7 @@ class Client(models.Model):
                                        help_text="Insert client's contact address", null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.title}"
 
 
 class Employee(models.Model):
@@ -60,7 +61,7 @@ class ConstructionObject(models.Model):
 
 class Task(models.Model):
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
-    name = models.CharField(verbose_name='Task', max_length=100, help_text='Insert task')
+    title = models.CharField(verbose_name='Task', max_length=100, help_text='Insert task')
     notes = models.TextField(verbose_name='Notes', max_length=2000, null=True, blank=True,
                              help_text="Insert task's notes")
     deadline = models.DateTimeField(verbose_name="Accomplish till", null=True, blank=True)
@@ -78,11 +79,11 @@ class Task(models.Model):
         ordering = ['-date']
 
     def __str__(self):
-        return f'{self.name} {self.deadline}'
+        return f'{self.title} {self.deadline}'
 
 
 class Tool(models.Model):
-    name = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool')
+    title = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool')
     inventory_number = models.CharField(verbose_name='Inventory number', max_length=100,
                                         help_text='Insert inventory number')
     employee = models.ForeignKey(to='Employee', on_delete=models.SET_NULL, null=True, blank=True)
@@ -97,4 +98,4 @@ class Tool(models.Model):
                               help_text='Status of the tool')
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.title}'

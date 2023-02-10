@@ -21,14 +21,14 @@ class ConstructionObjectInline(admin.TabularInline):
 
 class TaskInline(admin.TabularInline):
     model = Task
-    fields = ('date', 'name', 'deadline', 'status')
+    fields = ('date', 'title', 'deadline', 'status')
     readonly_fields = ('date', )
     extra = 0
 
 
 class ToolAdmin(admin.ModelAdmin):
-    list_display = ('name', 'inventory_number', 'employee', 'construction_object', 'status')
-    list_filter = ('name', 'employee', 'construction_object', 'status')
+    list_display = ('title', 'inventory_number', 'employee', 'construction_object', 'status')
+    list_filter = ('title', 'employee', 'construction_object', 'status')
     fieldsets = (
         ('General information', {'fields': ('inventory_number', )}),
         ('Availability', {'fields': ('status', 'employee', 'construction_object')})
@@ -44,12 +44,12 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'contact_phone')
+    list_display = ('title', 'contact_phone')
     inlines = [ConstructionObjectInline, BillInline]
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'employee', 'deadline', 'status')
+    list_display = ('date', 'title', 'employee', 'deadline', 'status')
 
 
 class BillAdmin(admin.ModelAdmin):
