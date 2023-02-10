@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>{% block title %}{% endblock %}</title>
+      {% load static %}
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        /* Menu text style */
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica;
+        }
+
+        /* Menu line background */
+        .topnav {
+          overflow: hidden;
+          background-color: DimGray;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+          float: left;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+          background-color: LightGray;
+          color: black;
+        }
+
+        /* Create a right-aligned (split) link inside the navigation bar */
+        .topnav a.split {
+          float: right;
+          background-color: Black;
+          color: white;
+        }
+
+        .topnav a.split:hover {
+          background-color: LightGray;
+          color: black;
+        }
+
+        .footer {
+           position: fixed;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+           background-color: DimGray;
+           color: white;
+           text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+      <div class="topnav">
+        <a class="active" href="#home">1</a>
+        <a href="#news">2</a>
+        <a href="#contact">3</a>
+        <a href="#about" class="split">4</a>
+      </div>
+
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
+
+      <div class="footer">
+        <p>@ 2023 tms-rls</p>
+      </div>
+    </body>
+  </html>
