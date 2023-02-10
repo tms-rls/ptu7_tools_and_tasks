@@ -4,6 +4,7 @@
       <meta charset="UTF-8">
       <title>{% block title %}{% endblock %}</title>
       {% load static %}
+      <link rel="stylesheet" href="{% static '/css/styles.css' %}">
       <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
         /* Menu text style */
@@ -15,12 +16,13 @@
         /* Menu line background */
         .topnav {
           overflow: hidden;
-          background-color: DimGray;
+          background-color: SlateGray;
         }
 
         /* Style the links inside the navigation bar */
         .topnav a {
           float: left;
+          background-color: DarkSlateGray;
           color: white;
           text-align: center;
           padding: 14px 16px;
@@ -37,7 +39,7 @@
         /* Create a right-aligned (split) link inside the navigation bar */
         .topnav a.split {
           float: right;
-          background-color: Black;
+          background-color: DarkSlateGray;
           color: white;
         }
 
@@ -51,7 +53,7 @@
            left: 0;
            bottom: 0;
            width: 100%;
-           background-color: DimGray;
+           background-color: SlateGray;
            color: white;
            text-align: center;
         }
