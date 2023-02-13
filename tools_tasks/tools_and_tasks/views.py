@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from django.views import generic
-from .models import Tool, Task
+from .models import Tool, Task, ConstructionObject
 
 
 def start(request):
@@ -30,3 +30,15 @@ class TaskDetailView(generic.DetailView):
     model = Task
     template_name = 'task_detail.html'
     context_object_name = "task_detail"
+
+
+class ConstructionObjectListView(generic.ListView):
+    model = ConstructionObject
+    template_name = 'construction_objects_list.html'
+    context_object_name = "construction_objects_list"
+
+
+class ConstructionObjectDetailView(generic.DetailView):
+    model = ConstructionObject
+    template_name = 'construction_object_detail.html'
+    context_object_name = "construction_object_detail"

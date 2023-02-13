@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Construction object{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+  <h1>Construction object details:</h1>
+
+    <p><strong>Address:</strong>{{ construction_object_detail.address }}</p>
+    <p><strong>Client:</strong> {{ construction_object_detail.client }}</p>
+    <p><strong>Manager:</strong> {{ construction_object_detail.manager }}</p>
+
+{% endblock %}

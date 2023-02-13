@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Construction objects{% endblock %}
+
+{% block content %}
+  <h1  style="text-align:center">Construction objects</h1>
+  {% if construction_objects_list %}
+    <ol>
+      {% for construction_object in construction_objects_list %}
+        <li>
+          <a href="{% url 'construction_object_detail_view' construction_object.pk %}">
+            {{ construction_object.address }} - {{construction_object.client}}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p>No construction objects at the moment.</p>
+  {% endif %}
+{% endblock %}
