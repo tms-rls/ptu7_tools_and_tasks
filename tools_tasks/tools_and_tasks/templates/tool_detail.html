@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Tool{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+  <h1>{{ tool_detail.title }}</h1>
+
+    <p><strong>Tool inventory number:</strong>{{ tool_detail.inventory_number }}</p>
+    <p><strong>Status:</strong> {{ tool_detail.get_status_display }}</p>
+    <p><strong>In possession:</strong> {{ tool_detail.employee }}</p>
+    <p><strong>Construction object:</strong> {{ tool_detail.construction_object }}</p>
+
+
+{% endblock %}

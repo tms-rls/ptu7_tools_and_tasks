@@ -8,7 +8,7 @@
     <ol>
       {% for tool in tools_list %}
         <li>
-          <a style="color:white" href="{% url 'tools_list_view' %}">{{ tool.title }} - {{tool.inventory_number}}</a>
+          <a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }} - {{tool.inventory_number}}</a>
         </li>
       {% endfor %}
     </ol>
