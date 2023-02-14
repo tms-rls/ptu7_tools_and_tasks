@@ -2,10 +2,17 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Tool, Task, ConstructionObject
+from django.db.models import Q
 
 
 def start(request):
     return render(request, 'start.html')
+
+
+def search_tools(request):
+    query = request.GET.get('query')
+    search_results = Tool.objects.filter(Q(title__icontains=query) | Q(inventory_number__icontains=query))
+    return render(request, 'search.html', {'tools_list': search_results, 'query': query})
 
 
 class ToolListView(generic.ListView):

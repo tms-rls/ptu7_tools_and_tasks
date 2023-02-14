@@ -47,6 +47,14 @@
           background-color: LightGray;
           color: black;
         }
+        .topnav input[type=text] {
+          float: right;
+          padding: 6px;
+          border: none;
+          margin-top: 8px;
+          margin-right: 16px;
+          font-size: 17px;
+        }
 
         .footer {
            position: fixed;
@@ -65,6 +73,9 @@
         <a href="{% url 'tools_list_view' %}">Tools</a>
         <a href="{% url 'tasks_list_view' %}">Tasks</a>
         <a href="{% url 'construction_objects_list_view' %}">Construction objects</a>
+        <form action="{% url 'search_tools' %}" method="get">
+          <input name="query" type="text" placeholder="Search tools">
+        </form>
         <a href="#about" class="split">4</a>
       </div>
 

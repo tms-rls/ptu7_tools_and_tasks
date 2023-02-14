@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+  <h1>Search "{{query}}" results:</h1>
+  <br>
+  {% if tools_list %}
+  <ul>
+    {% for tool in tools_list %}
+      <li>
+        <a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a> ({{tool.inventory_number}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No tools for "{{query}}" query</p>
+  {% endif %}
+
+{% endblock %}
