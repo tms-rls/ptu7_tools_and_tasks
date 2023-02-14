@@ -96,6 +96,7 @@ class Tool(models.Model):
     )
     status = models.CharField(verbose_name='Status', max_length=1, choices=status_choices, default='a',
                               help_text='Status of the tool')
+    picture = models.ImageField(verbose_name='Picture', upload_to='pictures', null=True, blank=True)
 
     def __str__(self):
         return f'{self.title}'
