@@ -80,7 +80,14 @@
         <form action="{% url 'search_tools' %}" method="get">
           <input name="query" type="text" placeholder="Search tools">
         </form>
-        <a href="#about" class="split">4</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="split">Log out</a>
+          <a href="#" class="split">My tools</a>
+          <a class="split">Logged as: {{ user.get_username }}</a>
+
+        {% else %}
+          <a href="{% url 'login' %}" class="split">Log in</a></li>
+        {% endif %}
       </div>
 
       <div class="container">
