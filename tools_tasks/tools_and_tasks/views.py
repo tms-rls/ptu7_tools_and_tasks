@@ -35,13 +35,6 @@ class ToolDetailView(generic.DetailView):
     context_object_name = "tool_detail"
 
 
-class TaskListView(generic.ListView):
-    model = Task
-    template_name = 'tasks_list.html'
-    context_object_name = "tasks_list"
-    paginate_by = 10
-
-
 class TaskDetailView(generic.DetailView):
     model = Task
     template_name = 'task_detail.html'
