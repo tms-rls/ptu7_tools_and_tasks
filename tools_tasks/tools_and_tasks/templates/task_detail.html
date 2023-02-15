@@ -9,9 +9,9 @@
   <h1>{{ task_detail.title }}</h1>
 
     <p><strong>Task date:</strong>{{ task_detail.date }}</p>
-    <p><strong>Task details:</strong> {{ task_detail.notes }}</p>
     <p><strong>Status:</strong> {{ task_detail.get_status_display }}</p>
     <p><strong>Deadline:</strong> {{ task_detail.deadline }}</p>
+    <p><strong>Task details:</strong> {{ task_detail.description | safe }}</p>
 
 
 {% endblock %}
