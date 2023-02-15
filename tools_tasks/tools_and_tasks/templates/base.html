@@ -78,7 +78,10 @@
         <a href="{% url 'tasks_list_view' %}">Tasks</a>
         <a href="{% url 'construction_objects_list_view' %}">Construction objects</a>
         <form action="{% url 'search_tools' %}" method="get">
-          <input name="query" type="text" placeholder="Search tools">
+          <input name="query" type="text" placeholder="Tool search">
+        </form>
+        <form action="{% url 'search_tasks' %}" method="get">
+          <input name="query" type="text" placeholder="Task search">
         </form>
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}" class="split">Log out</a>

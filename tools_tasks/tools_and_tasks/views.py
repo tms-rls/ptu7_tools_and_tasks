@@ -12,7 +12,13 @@ def start(request):
 def search_tools(request):
     query = request.GET.get('query')
     search_results = Tool.objects.filter(Q(title__icontains=query) | Q(inventory_number__icontains=query))
-    return render(request, 'search.html', {'tools_list': search_results, 'query': query})
+    return render(request, 'search_tools.html', {'tools_list': search_results, 'query': query})
+
+
+def search_tasks(request):
+    query = request.GET.get('query')
+    search_results = Task.objects.filter(Q(title__icontains=query) | Q(notes__icontains=query))
+    return render(request, 'search_tasks.html', {'tasks_list': search_results, 'query': query})
 
 
 class ToolListView(generic.ListView):

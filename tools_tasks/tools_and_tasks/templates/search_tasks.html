@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Task search results{% endblock %}
+
+{% block content %}
+  <h1>Search "{{query}}" results:</h1>
+  <br>
+  {% if tasks_list %}
+  <ul>
+    {% for task in tasks_list %}
+      <li>
+        <a href="{% url 'task_detail_view' task.pk %}">{{ task.title }}</a> ({{task.date}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No tasks for "{{query}}" query</p>
+  {% endif %}
+
+{% endblock %}
