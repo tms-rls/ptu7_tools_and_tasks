@@ -15,4 +15,5 @@ urlpatterns = [
     path('searchtools/', views.search_tools, name='search_tools'),
     path('searchtasks/', views.search_tasks, name='search_tasks'),
     path('employeetools/', views.EmployeeToolsListView.as_view(), name="employee_tools_list"),
+    path('employeetasks/', views.EmployeeTasksListView.as_view(), name="employee_tasks_list"),
 ]

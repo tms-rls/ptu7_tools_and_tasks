@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}My tools{% endblock %}
+{% block title %}My tasks{% endblock %}
 
 {% block content %}
   <h1>My tools:</h1>
 
-  {% if employee_tools_list %}
+  {% if employee_tasks_list %}
     <ol>
-      {% for tool in employee_tools_list %}
-        <li><a href="{% url 'tool_detail_view' tool.pk %}">{{tool.title}} {{tool.inventory_number}}</a></li>
+      {% for task in employee_tasks_list %}
+        <li><a href="{% url 'task_detail_view' task.pk %}">{{ task.title }} - {{task.deadline}} - {{ task.get_status_display }}</a></li>
       {% endfor %}
     </ol>
   {% else %}
-    <p>No taken tools.</p>
+    <p>No assigned tasks.</p>
   {% endif %}
 
   <div class="pagination">

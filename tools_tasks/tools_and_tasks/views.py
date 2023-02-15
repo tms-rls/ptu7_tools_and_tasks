@@ -26,6 +26,7 @@ class ToolListView(generic.ListView):
     model = Tool
     template_name = 'tools_list.html'
     context_object_name = "tools_list"
+    paginate_by = 10
 
 
 class ToolDetailView(generic.DetailView):
@@ -38,6 +39,7 @@ class TaskListView(generic.ListView):
     model = Task
     template_name = 'tasks_list.html'
     context_object_name = "tasks_list"
+    paginate_by = 10
 
 
 class TaskDetailView(generic.DetailView):
@@ -50,6 +52,7 @@ class ConstructionObjectListView(generic.ListView):
     model = ConstructionObject
     template_name = 'construction_objects_list.html'
     context_object_name = "construction_objects_list"
+    paginate_by = 10
 
 
 class ConstructionObjectDetailView(generic.DetailView):
@@ -62,6 +65,17 @@ class EmployeeToolsListView(LoginRequiredMixin, generic.ListView):
     model = Tool
     template_name = 'employee_tools_list.html'
     context_object_name = 'employee_tools_list'
+    paginate_by = 10
 
     def get_queryset(self):
         return Tool.objects.filter(employee=self.request.user)
+
+
+class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    template_name = 'employee_tasks_list.html'
+    context_object_name = 'employee_tasks_list'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Task.objects.filter(employee=self.request.user)
