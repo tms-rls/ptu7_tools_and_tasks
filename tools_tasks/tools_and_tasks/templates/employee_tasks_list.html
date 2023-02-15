@@ -8,7 +8,11 @@
   {% if employee_tasks_list %}
     <ol>
       {% for task in employee_tasks_list %}
-        <li><a href="{% url 'task_detail_view' task.pk %}">{{ task.title }} - {{task.deadline}} - {{ task.get_status_display }}</a></li>
+        <li>
+            <a style="{% if task.deadline_overdue %}color: red{% endif %}" href="{% url 'task_detail_view' task.pk %}">
+                {{ task.title }} - {{task.deadline}} - {{ task.get_status_display }}
+            </a>
+        </li>
       {% endfor %}
     </ol>
   {% else %}
