@@ -1,6 +1,10 @@
 
 from django.db import models
-# import datetime
+from django.contrib.auth.models import User
+import datetime
+import pytz
+
+utc = pytz.UTC
 
 
 class Bill(models.Model):
@@ -39,20 +43,10 @@ class Client(models.Model):
         return f"{self.title}"
 
 
-class Employee(models.Model):
-    name = models.CharField(verbose_name='Name', max_length=100, help_text="Insert employee's name")
-    surname = models.CharField(verbose_name='Surname', max_length=100, help_text="Insert employee's surname")
-    position = models.CharField(verbose_name='Position', max_length=100, null=True, blank=True,
-                                help_text="Insert employee's position")
-
-    def __str__(self):
-        return f"{self.name} {self.surname}"
-
-
 class ConstructionObject(models.Model):
     address = models.CharField(verbose_name='Address', max_length=200,
                                help_text='Insert address of construction object')
-    manager = models.ForeignKey(to='Employee', on_delete=models.SET_NULL, null=True, blank=True)
+    manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     client = models.ForeignKey(to='Client', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
@@ -65,7 +59,7 @@ class Task(models.Model):
     notes = models.TextField(verbose_name='Notes', max_length=2000, null=True, blank=True,
                              help_text="Insert task's notes")
     deadline = models.DateTimeField(verbose_name="Accomplish till", null=True, blank=True)
-    employee = models.ForeignKey(to='Employee', on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     status_choices = (
         ('a', 'Assigned'),
         ('p', 'In progress'),
@@ -78,6 +72,12 @@ class Task(models.Model):
     class Meta:
         ordering = ['-date']
 
+    def deadline_overdue(self):
+        if self.deadline:
+            return datetime.datetime.today().replace(tzinfo=utc) > self.deadline.replace(tzinfo=utc)
+        else:
+            return False
+
     def __str__(self):
         return f'{self.title} {self.deadline}'
 
@@ -86,7 +86,7 @@ class Tool(models.Model):
     title = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool')
     inventory_number = models.CharField(verbose_name='Inventory number', max_length=100,
                                         help_text='Insert inventory number')
-    employee = models.ForeignKey(to='Employee', on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True)
     status_choices = (
         ('a', 'Available'),

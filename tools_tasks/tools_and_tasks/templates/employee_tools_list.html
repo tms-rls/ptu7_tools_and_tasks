@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}My tools{% endblock %}
+
+{% block content %}
+  <h1>My tools:</h1>
+
+  {% if employee_tools_list %}
+    <ol>
+      {% for tool in employee_tools_list %}
+        <li><a href="{% url 'tool_detail_view' tool.pk %}">{{tool.title}} {{tool.inventory_number}}</a></li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p>No taken tools.</p>
+  {% endif %}
+{% endblock %}

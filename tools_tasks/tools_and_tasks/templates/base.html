@@ -85,7 +85,7 @@
         </form>
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}" class="split">Log out</a>
-          <a href="#" class="split">My tools</a>
+          <a href="{% url 'employee_tools_list' %}" class="split">My tools</a>
           <a class="split">Logged as: {{ user.get_username }}</a>
 
         {% else %}

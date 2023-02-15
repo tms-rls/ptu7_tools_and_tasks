@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Tool, Task, ConstructionObject
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def start(request):
@@ -55,3 +56,12 @@ class ConstructionObjectDetailView(generic.DetailView):
     model = ConstructionObject
     template_name = 'construction_object_detail.html'
     context_object_name = "construction_object_detail"
+
+
+class EmployeeToolsListView(LoginRequiredMixin, generic.ListView):
+    model = Tool
+    template_name = 'employee_tools_list.html'
+    context_object_name = 'employee_tools_list'
+
+    def get_queryset(self):
+        return Tool.objects.filter(employee=self.request.user)

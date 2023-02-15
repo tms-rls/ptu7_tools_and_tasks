@@ -14,4 +14,5 @@ urlpatterns = [
          name='construction_object_detail_view'),
     path('searchtools/', views.search_tools, name='search_tools'),
     path('searchtasks/', views.search_tasks, name='search_tasks'),
+    path('employeetools/', views.EmployeeToolsListView.as_view(), name="employee_tools_list"),
 ]

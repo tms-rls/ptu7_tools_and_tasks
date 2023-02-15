@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 
-from .models import Bill, Client, Employee, ConstructionObject, Task, Tool
+from .models import Bill, Client, ConstructionObject, Task, Tool
 
 
 class ToolInline(admin.TabularInline):
@@ -39,10 +39,6 @@ class ConstructionObjectAdmin(admin.ModelAdmin):
     inlines = [ToolInline, BillInline]
 
 
-class EmployeeAdmin(admin.ModelAdmin):
-    inlines = [ToolInline, TaskInline, ConstructionObjectInline]
-
-
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('title', 'contact_phone')
     inlines = [ConstructionObjectInline, BillInline]
@@ -58,7 +54,6 @@ class BillAdmin(admin.ModelAdmin):
 
 admin.site.register(Bill, BillAdmin)
 admin.site.register(Client, ClientAdmin)
-admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(ConstructionObject, ConstructionObjectAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Tool, ToolAdmin)
