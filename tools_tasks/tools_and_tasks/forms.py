@@ -1,5 +1,5 @@
 
-from .models import TaskComment, ToolComment
+from .models import ConstructionObjectComment, TaskComment, ToolComment
 from django import forms
 
 
@@ -15,3 +15,10 @@ class ToolCommentForm(forms.ModelForm):
         model = ToolComment
         fields = ('text', 'employee',)
         widgets = {'tool': forms.HiddenInput(), 'employee': forms.HiddenInput()}
+
+
+class ConstructionObjectCommentForm(forms.ModelForm):
+    class Meta:
+        model = ConstructionObjectComment
+        fields = ('text', 'employee',)
+        widgets = {'construction_object': forms.HiddenInput(), 'employee': forms.HiddenInput()}

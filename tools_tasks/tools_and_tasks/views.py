@@ -2,7 +2,7 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic
 from .models import Tool, Task, ConstructionObject
-from .forms import TaskCommentForm, ToolCommentForm
+from .forms import ConstructionObjectCommentForm, TaskCommentForm, ToolCommentForm
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormMixin
@@ -88,10 +88,28 @@ class ConstructionObjectListView(generic.ListView):
     ordering = 'address'
 
 
-class ConstructionObjectDetailView(generic.DetailView):
+class ConstructionObjectDetailView(FormMixin, generic.DetailView):
     model = ConstructionObject
     template_name = 'construction_object_detail.html'
+    form_class = ConstructionObjectCommentForm
     context_object_name = "construction_object_detail"
+
+    def get_success_url(self):
+        return reverse('construction_object_detail_view', kwargs={"pk": self.object.id})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.construction_object = self.object
+        form.instance.employee = self.request.user
+        form.save()
+        return super(ConstructionObjectDetailView, self).form_valid(form)
 
 
 class EmployeeToolsListView(LoginRequiredMixin, generic.ListView):

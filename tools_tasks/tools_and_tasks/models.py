@@ -54,6 +54,18 @@ class ConstructionObject(models.Model):
         return f"{self.address}"
 
 
+class ConstructionObjectComment(models.Model):
+    construction_object = models.ForeignKey(to='ConstructionObject', verbose_name='Construction object',
+                                            on_delete=models.SET_NULL, null=True, blank=True,
+                                            related_name='construction_object_comments')
+    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateTimeField(verbose_name='Date', auto_now_add=True)
+    text = models.TextField(verbose_name='Comment', max_length=2000, help_text='Insert your comment')
+
+    class Meta:
+        ordering = ['-date']
+
+
 class Task(models.Model):
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
     title = models.CharField(verbose_name='Task', max_length=100, help_text='Insert task')
