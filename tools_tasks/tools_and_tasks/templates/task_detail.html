@@ -13,5 +13,29 @@
     <p><strong>Deadline:</strong> {{ task_detail.deadline }}</p>
     <p><strong>Task details:</strong> {{ task_detail.description | safe }}</p>
 
+  <hr>
+  <h2>Comments:</h2>
+  {% if task_detail.comments.all %}
+    {% for comment in task_detail.comments.all %}
+      <hr>
+      <strong>{{ comment.employee }}</strong>, <em>{{ comment.date}}</em>
+      <p>{{ comment.text }}</p>
+    {% endfor %}
+  {% else %}
+    <p>No comments yet</p>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <div class="fieldWrapper">
+         <br/>
+        <h4>Post comment:</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.text }}
+            <br/>
+            <input type="submit" value="Post">
+        </form>
+    </div>
+{% endif %}
 
 {% endblock %}

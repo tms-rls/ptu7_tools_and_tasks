@@ -82,6 +82,17 @@ class Task(models.Model):
         return f'{self.title} {self.deadline}'
 
 
+class TaskComment(models.Model):
+    task = models.ForeignKey(to='Task', verbose_name='Task', on_delete=models.SET_NULL, null=True, blank=True,
+                             related_name='comments')
+    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateTimeField(verbose_name='Date', auto_now_add=True)
+    text = models.TextField(verbose_name='Comment', max_length=2000, help_text='Insert your comment')
+
+    class Meta:
+        ordering = ['-date']
+
+
 class Tool(models.Model):
     title = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool')
     inventory_number = models.CharField(verbose_name='Inventory number', max_length=100,
