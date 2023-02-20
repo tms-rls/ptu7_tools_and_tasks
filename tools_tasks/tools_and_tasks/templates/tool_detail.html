@@ -18,5 +18,29 @@
   <p><strong>In possession:</strong> {{ tool_detail.employee }}</p>
   <p><strong>Construction object:</strong> {{ tool_detail.construction_object }}</p>
 
+  <hr>
+  <h2>Comments:</h2>
+  {% if tool_detail.tool_comments.all %}
+    {% for comment in tool_detail.tool_comments.all %}
+      <hr>
+      <strong>{{ comment.employee }}</strong>, <em>{{ comment.date}}</em>
+      <p>{{ comment.text }}</p>
+    {% endfor %}
+  {% else %}
+    <p>No comments yet</p>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+      <div class="fieldWrapper">
+           <br/>
+          <h4>Post comment:</h4>
+          <form action="" method="post">
+              {% csrf_token %}
+              {{ form.text }}
+              <br/>
+              <input type="submit" value="Post">
+          </form>
+      </div>
+  {% endif %}
 
 {% endblock %}

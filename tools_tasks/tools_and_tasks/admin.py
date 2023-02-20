@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 
-from .models import Bill, Client, ConstructionObject, Task, TaskComment, Tool
+from .models import Bill, Client, ConstructionObject, Task, TaskComment, Tool, ToolComment
 
 
 class ToolInline(admin.TabularInline):
@@ -56,9 +56,14 @@ class TaskCommentAdmin(admin.ModelAdmin):
     list_display = ('date', 'task', 'employee', 'text')
 
 
+class ToolCommentAdmin(admin.ModelAdmin):
+    list_display = ('date', 'tool', 'employee', 'text')
+
+
 admin.site.register(Bill, BillAdmin)
 admin.site.register(Client, ClientAdmin)
 admin.site.register(ConstructionObject, ConstructionObjectAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(TaskComment, TaskCommentAdmin)
 admin.site.register(Tool, ToolAdmin)
+admin.site.register(ToolComment, ToolCommentAdmin)

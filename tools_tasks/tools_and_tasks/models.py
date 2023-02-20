@@ -111,3 +111,14 @@ class Tool(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+
+class ToolComment(models.Model):
+    tool = models.ForeignKey(to='Tool', verbose_name='Tool', on_delete=models.SET_NULL, null=True, blank=True,
+                             related_name='tool_comments')
+    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateTimeField(verbose_name='Date', auto_now_add=True)
+    text = models.TextField(verbose_name='Comment', max_length=2000, help_text='Insert your comment')
+
+    class Meta:
+        ordering = ['-date']

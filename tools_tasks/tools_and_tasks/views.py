@@ -2,7 +2,7 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic
 from .models import Tool, Task, ConstructionObject
-from .forms import TaskCommentForm
+from .forms import TaskCommentForm, ToolCommentForm
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormMixin
@@ -32,10 +32,28 @@ class ToolListView(generic.ListView):
     ordering = 'inventory_number'
 
 
-class ToolDetailView(generic.DetailView):
+class ToolDetailView(FormMixin, generic.DetailView):
     model = Tool
     template_name = 'tool_detail.html'
+    form_class = ToolCommentForm
     context_object_name = "tool_detail"
+
+    def get_success_url(self):
+        return reverse('tool_detail_view', kwargs={"pk": self.object.id})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.tool = self.object
+        form.instance.employee = self.request.user
+        form.save()
+        return super(ToolDetailView, self).form_valid(form)
 
 
 class TaskDetailView(FormMixin, generic.DetailView):

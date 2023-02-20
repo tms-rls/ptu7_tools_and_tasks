@@ -25,17 +25,17 @@
     <p>No comments yet</p>
   {% endif %}
 
-  {% if user.is_authenticated %}
-    <div class="fieldWrapper">
-         <br/>
-        <h4>Post comment:</h4>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.text }}
-            <br/>
-            <input type="submit" value="Post">
-        </form>
-    </div>
-{% endif %}
+    {% if user.is_authenticated %}
+        <div class="fieldWrapper">
+             <br/>
+            <h4>Post comment:</h4>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.text }}
+                <br/>
+                <input type="submit" value="Post">
+            </form>
+        </div>
+    {% endif %}
 
 {% endblock %}
