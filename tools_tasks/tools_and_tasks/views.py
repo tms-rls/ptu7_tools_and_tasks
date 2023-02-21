@@ -149,10 +149,19 @@ class ToolUpdateView(LoginRequiredMixin, generic.UpdateView):
     fields = ['title', 'inventory_number', 'status', 'employee', 'construction_object', 'picture']
     template_name = 'new_tool.html'
 
+    def get_success_url(self):
+        return reverse("tool_detail_view", kwargs={"pk": self.object.id})
+
+
+class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Task
+    fields = ['title', 'description', 'deadline', 'employee', 'status']
+    template_name = 'new_task.html'
+
     def form_valid(self, form):
         form.instance.employee = self.request.user
         form.save()
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("tool_detail_view", kwargs={"pk": self.object.id})
+        return reverse("task_detail_view", kwargs={"pk": self.object.id})
