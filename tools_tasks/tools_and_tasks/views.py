@@ -117,6 +117,7 @@ class EmployeeToolsListView(LoginRequiredMixin, generic.ListView):
     template_name = 'employee_tools_list.html'
     context_object_name = 'employee_tools_list'
     paginate_by = 10
+    ordering = 'inventory_number'
 
     def get_queryset(self):
         return Tool.objects.filter(employee=self.request.user).order_by('inventory_number')
