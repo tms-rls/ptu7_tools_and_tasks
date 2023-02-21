@@ -85,7 +85,7 @@
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}" class="split">Log out</a>
           <a href="{% url 'employee_tasks_list' %}" class="split">My tasks</a>
-          <a href="{% url 'new_tool_view' %}" class="split">Add tool</a>
+          <a href="{% url 'tool_create_view' %}" class="split">Add tool</a>
           <a href="{% url 'employee_tools_list' %}" class="split">My tools</a>
           <a class="split">Logged as: {{ user.get_username }}</a>
 

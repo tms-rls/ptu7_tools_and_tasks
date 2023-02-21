@@ -17,6 +17,12 @@
   <p><strong>Status:</strong> {{ tool_detail.get_status_display }}</p>
   <p><strong>In possession:</strong> {{ tool_detail.employee }}</p>
   <p><strong>Construction object:</strong> {{ tool_detail.construction_object }}</p>
+  <br>
+  {% if user.is_authenticated %}
+      <div>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'tool_update_view' tool_detail.pk %}">Edit tool</a>
+      </div>
+  {% endif %}
 
   <hr>
   <h2>Comments:</h2>
