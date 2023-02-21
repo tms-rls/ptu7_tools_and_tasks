@@ -30,7 +30,7 @@ class ToolAdmin(admin.ModelAdmin):
     list_display = ('title', 'inventory_number', 'employee', 'construction_object', 'status')
     list_filter = ('title', 'employee', 'construction_object', 'status')
     fieldsets = (
-        ('General information', {'fields': ('inventory_number', )}),
+        ('General information', {'fields': ('title', 'inventory_number', )}),
         ('Availability', {'fields': ('status', 'employee', 'construction_object')})
     )
 

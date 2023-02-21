@@ -10,7 +10,8 @@ utc = pytz.UTC
 
 class Bill(models.Model):
     date = models.DateField(verbose_name='Date', null=True, blank=True)
-    number = models.CharField(verbose_name='Number of bill', max_length=10, help_text='Insert number of bill')
+    number = models.CharField(verbose_name='Number of bill', max_length=10, unique=True,
+                              help_text='Insert number of bill')
     client = models.ForeignKey(to='Client', on_delete=models.SET_NULL, null=True, blank=True)
     construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True)
     amount = models.FloatField(verbose_name='Amount', help_text='Insert amount of the bill')
@@ -106,8 +107,8 @@ class TaskComment(models.Model):
 
 
 class Tool(models.Model):
-    title = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool')
-    inventory_number = models.CharField(verbose_name='Inventory number', max_length=100,
+    title = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool title')
+    inventory_number = models.CharField(verbose_name='Inventory number', max_length=100, unique=True,
                                         help_text='Insert inventory number')
     employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True)
