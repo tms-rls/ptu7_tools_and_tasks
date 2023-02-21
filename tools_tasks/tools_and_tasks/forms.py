@@ -1,5 +1,5 @@
 
-from .models import ConstructionObjectComment, TaskComment, ToolComment
+from .models import ConstructionObjectComment, TaskComment, ToolComment, Task
 from django import forms
 
 
@@ -22,3 +22,14 @@ class ConstructionObjectCommentForm(forms.ModelForm):
         model = ConstructionObjectComment
         fields = ('text', 'employee',)
         widgets = {'construction_object': forms.HiddenInput(), 'employee': forms.HiddenInput()}
+
+
+class DateInsertion(forms.DateInput):
+    input_type = 'datetime-local'
+
+
+class TaskCreateForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'deadline', 'employee', 'status']
+        widgets = {'deadline': DateInsertion()}

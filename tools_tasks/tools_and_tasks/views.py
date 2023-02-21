@@ -2,9 +2,9 @@
 from django.shortcuts import render, reverse
 from django.views import generic
 from .models import Tool, Task, ConstructionObject
-from .forms import ConstructionObjectCommentForm, TaskCommentForm, ToolCommentForm
+from .forms import ConstructionObjectCommentForm, TaskCommentForm, ToolCommentForm, TaskCreateForm
 from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
 
 
@@ -138,11 +138,6 @@ class ToolCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = '/tools/'
     template_name = 'new_tool.html'
 
-    def form_valid(self, form):
-        form.instance.employee = self.request.user
-        form.save()
-        return super().form_valid(form)
-
 
 class ToolUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Tool
@@ -155,13 +150,21 @@ class ToolUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
-    fields = ['title', 'description', 'deadline', 'employee', 'status']
     template_name = 'new_task.html'
+    form_class = TaskCreateForm
 
-    def form_valid(self, form):
-        form.instance.employee = self.request.user
-        form.save()
-        return super().form_valid(form)
+    def get_success_url(self):
+        return reverse("task_detail_view", kwargs={"pk": self.object.id})
+
+
+class EmployeeTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Task
+    template_name = 'new_task.html'
+    form_class = TaskCreateForm
+
+    def test_func(self):
+        task = self.get_object()
+        return task.employee == self.request.user
 
     def get_success_url(self):
         return reverse("task_detail_view", kwargs={"pk": self.object.id})

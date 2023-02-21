@@ -12,7 +12,13 @@
     <p><strong>Status:</strong> {{ task_detail.get_status_display }}</p>
     <p><strong>Deadline:</strong> {{ task_detail.deadline }}</p>
     <p><strong>Task details:</strong> {{ task_detail.description | safe }}</p>
-
+    <br>
+    {% if user.is_authenticated %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task_update_view' task_detail.pk %}">Edit task</a>
+        </div>
+    {% endif %}
+    <br>
   <hr>
   <h2>Comments:</h2>
   {% if task_detail.comments.all %}

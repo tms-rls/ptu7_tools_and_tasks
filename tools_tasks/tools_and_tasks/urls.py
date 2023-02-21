@@ -11,6 +11,7 @@ urlpatterns = [
     path('tools/<int:pk>/update', views.ToolUpdateView.as_view(), name='tool_update_view'),
     path('tasks/<int:pk>', views.TaskDetailView.as_view(), name='task_detail_view'),
     path('tasks/new', views.TaskCreateView.as_view(), name='task_create_view'),
+    path('tasks/<int:pk>/update', views.EmployeeTaskUpdateView.as_view(), name='task_update_view'),
     path('constructionobjects/', views.ConstructionObjectListView.as_view(), name='construction_objects_list_view'),
     path('constructionobjects/<int:pk>', views.ConstructionObjectDetailView.as_view(),
          name='construction_object_detail_view'),
