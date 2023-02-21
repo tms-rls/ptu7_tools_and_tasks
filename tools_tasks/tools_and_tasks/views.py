@@ -130,3 +130,15 @@ class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return Task.objects.filter(employee=self.request.user).order_by('date')
+
+
+class ToolCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Tool
+    fields = ['title', 'inventory_number', 'status', 'employee', 'construction_object', 'picture']
+    success_url = '/tools/'
+    template_name = 'new_tool.html'
+
+    def form_valid(self, form):
+        form.instance.employee = self.request.user
+        form.save()
+        return super().form_valid(form)
