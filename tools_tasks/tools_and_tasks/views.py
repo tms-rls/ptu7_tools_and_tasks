@@ -160,8 +160,8 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
 
 class EmployeeTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Task
+    fields = ['status']
     template_name = 'new_task.html'
-    form_class = TaskCreateForm
 
     def test_func(self):
         task = self.get_object()

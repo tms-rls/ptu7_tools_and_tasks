@@ -79,9 +79,11 @@
         <form action="{% url 'search_tools' %}" method="get">
           <input name="query" type="text" placeholder="Tool search">
         </form>
-        <form action="{% url 'search_tasks' %}" method="get">
-          <input name="query" type="text" placeholder="Task search">
-        </form>
+        {% if user.is_authenticated %}
+          <form action="{% url 'search_tasks' %}" method="get">
+            <input name="query" type="text" placeholder="Task search">
+          </form>
+        {% endif %}
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}" class="split">Log out</a>
           <a href="{% url 'task_create_view' %}" class="split">Add task</a>
