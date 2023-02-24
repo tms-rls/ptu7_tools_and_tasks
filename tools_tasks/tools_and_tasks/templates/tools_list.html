@@ -4,15 +4,29 @@
 
 {% block content %}
 
-  <h1  style="text-align:center">Tools list</h1>
+  <h1  style="text-align:center">Tool list</h1>
   {% if tools_list %}
-    <ol>
-      {% for tool in tools_list %}
-        <li>
-          <a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }} - {{tool.inventory_number}}</a>
-        </li>
-      {% endfor %}
-    </ol>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Tool</th>
+                    <th scope="col">Inventory number</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Taken by</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tool in tools_list %}
+                    <tr>
+                        <th scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a></th>
+                        <td scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.inventory_number }}</a></td>
+                        <td scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.get_status_display }}</a></td>
+                        <td scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.employee }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
   {% else %}
     <p>No tools at the moment.</p>
   {% endif %}
