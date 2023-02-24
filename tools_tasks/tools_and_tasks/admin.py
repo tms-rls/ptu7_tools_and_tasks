@@ -6,6 +6,7 @@ from .models import Bill, Client, ConstructionObject, ConstructionObjectComment,
 
 class ToolInline(admin.TabularInline):
     model = Tool
+    fields = ('title', 'inventory_number', 'employee', 'construction_object', 'status')
     extra = 0
 
 
@@ -27,15 +28,12 @@ class TaskInline(admin.TabularInline):
 
 
 class ToolAdmin(admin.ModelAdmin):
-    list_display = ('title', 'inventory_number', 'employee', 'construction_object', 'status')
+    list_display = ('title', 'inventory_number', 'employee', 'construction_object', 'status', 'display_tool_comments')
     list_filter = ('title', 'employee', 'construction_object', 'status')
-    fieldsets = (
-        ('General information', {'fields': ('title', 'inventory_number', )}),
-        ('Availability', {'fields': ('status', 'employee', 'construction_object')})
-    )
 
 
 class ConstructionObjectAdmin(admin.ModelAdmin):
+    list_display = ('address', 'manager', 'display_conobj_comments')
     inlines = [ToolInline, BillInline]
 
 
@@ -45,7 +43,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('date', 'title', 'employee', 'deadline', 'status')
+    list_display = ('date', 'title', 'employee', 'deadline', 'status', 'display_task_comments')
 
 
 class BillAdmin(admin.ModelAdmin):

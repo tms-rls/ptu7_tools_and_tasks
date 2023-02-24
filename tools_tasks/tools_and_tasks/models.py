@@ -54,6 +54,11 @@ class ConstructionObject(models.Model):
     def __str__(self):
         return f"{self.address}"
 
+    def display_conobj_comments(self):
+        return ' | '.join(comment.text for comment in self.construction_object_comments.all())
+
+    display_conobj_comments.short_description = 'Comments'
+
 
 class ConstructionObjectComment(models.Model):
     construction_object = models.ForeignKey(to='ConstructionObject', verbose_name='Construction object',
@@ -94,10 +99,15 @@ class Task(models.Model):
     def __str__(self):
         return f'{self.title} {self.deadline}'
 
+    def display_task_comments(self):
+        return ' | '.join(comment.text for comment in self.task_comments.all())
+
+    display_task_comments.short_description = 'Comments'
+
 
 class TaskComment(models.Model):
     task = models.ForeignKey(to='Task', verbose_name='Task', on_delete=models.SET_NULL, null=True, blank=True,
-                             related_name='comments')
+                             related_name='task_comments')
     employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(verbose_name='Date', auto_now_add=True)
     text = models.TextField(verbose_name='Comment', max_length=2000, help_text='Insert your comment')
@@ -124,6 +134,11 @@ class Tool(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def display_tool_comments(self):
+        return ' | '.join(comment.text for comment in self.tool_comments.all())
+
+    display_tool_comments.short_description = 'Comments'
 
 
 class ToolComment(models.Model):
