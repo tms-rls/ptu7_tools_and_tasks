@@ -8,12 +8,19 @@
 
   <h1>{{ task_detail.title }}</h1>
 
-    <p><strong>Task date:</strong>{{ task_detail.date }}</p>
-    <p><strong>Status:</strong> {{ task_detail.get_status_display }}</p>
-    <p><strong>Deadline:</strong> {{ task_detail.deadline }}</p>
-    <p><strong>Task details:</strong> {{ task_detail.description | safe }}</p>
+    <p><strong>Task manager: </strong>{{ task_detail.manager }}</p>
+    <p><strong>Task date: </strong>{{ task_detail.date }}</p>
+    <p><strong>Task details :</strong> {{ task_detail.description | safe }}</p>
+    <p><strong>Assigned to : </strong> {{ task_detail.employee }}</p>
+    <p><strong>Deadline: </strong> {{ task_detail.deadline }}</p>
+    <p><strong>Status: </strong> {{ task_detail.get_status_display }}</p>
     <br>
-    {% if user.is_authenticated %}
+    {% if task_detail.manager == user %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task_manager_update_view' task_detail.pk %}">Edit task</a>
+        </div>
+    {% endif %}
+    {% if task_detail.employee == user %}
         <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task_update_view' task_detail.pk %}">Edit task</a>
         </div>
@@ -21,8 +28,8 @@
     <br>
   <hr>
   <h2>Comments:</h2>
-  {% if task_detail.comments.all %}
-    {% for comment in task_detail.comments.all %}
+  {% if task_detail.task_comments.all %}
+    {% for comment in task_detail.task_comments.all %}
       <hr>
       <strong>{{ comment.employee }}</strong>, <em>{{ comment.date}}</em>
       <p>{{ comment.text }}</p>

@@ -73,11 +73,12 @@ class ConstructionObjectComment(models.Model):
 
 
 class Task(models.Model):
+    manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
     title = models.CharField(verbose_name='Task', max_length=100, help_text='Insert task')
     description = HTMLField(verbose_name='Description', null=True, blank=True)
     deadline = models.DateTimeField(verbose_name="Accomplish till", null=True, blank=True)
-    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='manager')
     status_choices = (
         ('a', 'Assigned'),
         ('p', 'In progress'),

@@ -31,5 +31,5 @@ class DateInsertion(forms.DateInput):
 class TaskCreateForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'description', 'deadline', 'employee', 'status']
-        widgets = {'deadline': DateInsertion()}
+        fields = ['manager', 'title', 'description', 'deadline', 'employee', 'status']
+        widgets = {'manager': forms.HiddenInput(), 'deadline': DateInsertion()}

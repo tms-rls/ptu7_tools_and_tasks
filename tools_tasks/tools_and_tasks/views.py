@@ -130,7 +130,7 @@ class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Task.objects.filter(employee=self.request.user).order_by('date')
+        return Task.objects.filter(Q(manager=self.request.user) | Q(employee=self.request.user)).order_by('date')
 
 
 class ToolCreateView(LoginRequiredMixin, generic.CreateView):
@@ -154,6 +154,11 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = 'new_task.html'
     form_class = TaskCreateForm
 
+    def form_valid(self, form):
+        form.instance.manager = self.request.user
+        form.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse("task_detail_view", kwargs={"pk": self.object.id})
 
@@ -166,6 +171,19 @@ class EmployeeTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.Up
     def test_func(self):
         task = self.get_object()
         return task.employee == self.request.user
+
+    def get_success_url(self):
+        return reverse("task_detail_view", kwargs={"pk": self.object.id})
+
+
+class ManagerTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Task
+    template_name = 'new_task.html'
+    form_class = TaskCreateForm
+
+    def test_func(self):
+        task = self.get_object()
+        return task.manager == self.request.user
 
     def get_success_url(self):
         return reverse("task_detail_view", kwargs={"pk": self.object.id})
