@@ -71,6 +71,9 @@ class ConstructionObjectComment(models.Model):
     class Meta:
         ordering = ['-date']
 
+    def __str__(self):
+        return f"{self.employee} - {self.text}"
+
 
 class Task(models.Model):
     manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
@@ -116,6 +119,9 @@ class TaskComment(models.Model):
     class Meta:
         ordering = ['-date']
 
+    def __str__(self):
+        return f"{self.employee} - {self.text}"
+
 
 class Tool(models.Model):
     title = models.CharField(verbose_name='Tool', max_length=100, help_text='Insert tool title')
@@ -151,3 +157,6 @@ class ToolComment(models.Model):
 
     class Meta:
         ordering = ['-date']
+
+    def __str__(self):
+        return f"{self.employee} - {self.text}"

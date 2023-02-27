@@ -6,15 +6,28 @@
   <h1>My tasks:</h1>
 
   {% if employee_tasks_list %}
-    <ol>
       {% for task in employee_tasks_list %}
-        <li>
-            <a style="{% if task.deadline_overdue %}color: red{% endif %}" href="{% url 'task_detail_view' task.pk %}">
-                {{ task.manager }} - {{ task.title }} - {{task.deadline}} - {{ task.get_status_display }}
-            </a>
-        </li>
+        {% if task.employee == user %}
+            <p>Assigned tasks:</p>
+                <ol>
+                    <li>
+                        <a style="{% if task.deadline_overdue %}color: red{% endif %}" href="{% url 'task_detail_view' task.pk %}">
+                            {{ task.manager }} - {{ task.title }} - {{task.deadline}} - {{ task.get_status_display }}
+                        </a>
+                    </li>
+                </ol>
+        {% endif %}
+        {% if task.manager == user %}
+            <p>Created tasks:</p>
+                <ol>
+                    <li>
+                        <a style="{% if task.deadline_overdue %}color: red{% endif %}" href="{% url 'task_detail_view' task.pk %}">
+                            {{ task.title }} - {{task.deadline}} - {{ task.get_status_display }}
+                        </a>
+                    </li>
+                </ol>
+        {% endif %}
       {% endfor %}
-    </ol>
   {% else %}
     <p>No assigned tasks.</p>
   {% endif %}
