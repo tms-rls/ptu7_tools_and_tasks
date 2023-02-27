@@ -20,7 +20,7 @@ def search_tools(request):
 
 def search_tasks(request):
     query = request.GET.get('query')
-    search_results = Task.objects.filter(Q(title__icontains=query) | Q(notes__icontains=query))
+    search_results = Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'search_tasks.html', {'tasks_list': search_results, 'query': query})
 
 

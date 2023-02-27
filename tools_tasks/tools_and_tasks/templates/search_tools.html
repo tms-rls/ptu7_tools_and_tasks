@@ -9,7 +9,9 @@
   <ul>
     {% for tool in tools_list %}
       <li>
-        <a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a> ({{tool.inventory_number}})
+        <a href="{% url 'tool_detail_view' tool.pk %}">
+          {{ tool.title }} {{tool.inventory_number}} {{ tool.get_status_display }} {{ tool.employee }}
+        </a>
       </li>
     {% endfor %}
   </ul>
