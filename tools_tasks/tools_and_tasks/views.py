@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, reverse
 from django.views import generic
-from .models import Tool, Task, ConstructionObject
+from .models import Bill, ConstructionObject, Task, Tool
 from .forms import ConstructionObjectCommentForm, TaskCommentForm, ToolCommentForm, TaskCreateForm
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -22,62 +22,6 @@ def search_tasks(request):
     query = request.GET.get('query')
     search_results = Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'search_tasks.html', {'tasks_list': search_results, 'query': query})
-
-
-class ToolListView(generic.ListView):
-    model = Tool
-    template_name = 'tools_list.html'
-    context_object_name = "tools_list"
-    paginate_by = 10
-    ordering = 'inventory_number'
-
-
-class ToolDetailView(FormMixin, generic.DetailView):
-    model = Tool
-    template_name = 'tool_detail.html'
-    form_class = ToolCommentForm
-    context_object_name = "tool_detail"
-
-    def get_success_url(self):
-        return reverse('tool_detail_view', kwargs={"pk": self.object.id})
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
-
-    def form_valid(self, form):
-        form.instance.tool = self.object
-        form.instance.employee = self.request.user
-        form.save()
-        return super(ToolDetailView, self).form_valid(form)
-
-
-class TaskDetailView(FormMixin, generic.DetailView):
-    model = Task
-    template_name = 'task_detail.html'
-    form_class = TaskCommentForm
-    context_object_name = "task_detail"
-
-    def get_success_url(self):
-        return reverse('task_detail_view', kwargs={"pk": self.object.id})
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
-
-    def form_valid(self, form):
-        form.instance.task = self.object
-        form.instance.employee = self.request.user
-        form.save()
-        return super(TaskDetailView, self).form_valid(form)
 
 
 class ConstructionObjectListView(generic.ListView):
@@ -112,15 +56,44 @@ class ConstructionObjectDetailView(FormMixin, generic.DetailView):
         return super(ConstructionObjectDetailView, self).form_valid(form)
 
 
-class EmployeeToolsListView(LoginRequiredMixin, generic.ListView):
-    model = Tool
-    template_name = 'employee_tools_list.html'
-    context_object_name = 'employee_tools_list'
-    paginate_by = 10
-    ordering = 'inventory_number'
+class ConstructionObjectCreateView(LoginRequiredMixin, generic.CreateView):
+    model = ConstructionObject
+    fields = ['address', 'manager', 'client']
+    success_url = '/constructionobjects/'
+    template_name = 'new_construction_object.html'
 
-    def get_queryset(self):
-        return Tool.objects.filter(employee=self.request.user).order_by('inventory_number')
+
+class ConstructionObjectUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = ConstructionObject
+    fields = ['address', 'manager', 'client']
+    template_name = 'new_construction_object.html'
+
+    def get_success_url(self):
+        return reverse('construction_object_detail_view', kwargs={"pk": self.object.id})
+
+
+class TaskDetailView(FormMixin, generic.DetailView):
+    model = Task
+    template_name = 'task_detail.html'
+    form_class = TaskCommentForm
+    context_object_name = "task_detail"
+
+    def get_success_url(self):
+        return reverse('task_detail_view', kwargs={"pk": self.object.id})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.task = self.object
+        form.instance.employee = self.request.user
+        form.save()
+        return super(TaskDetailView, self).form_valid(form)
 
 
 class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
@@ -131,22 +104,6 @@ class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return Task.objects.filter(Q(manager=self.request.user) | Q(employee=self.request.user)).order_by('date')
-
-
-class ToolCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Tool
-    fields = ['title', 'inventory_number', 'status', 'employee', 'construction_object', 'picture']
-    success_url = '/tools/'
-    template_name = 'new_tool.html'
-
-
-class ToolUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Tool
-    fields = ['title', 'inventory_number', 'status', 'employee', 'construction_object', 'picture']
-    template_name = 'new_tool.html'
-
-    def get_success_url(self):
-        return reverse("tool_detail_view", kwargs={"pk": self.object.id})
 
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
@@ -189,17 +146,60 @@ class ManagerTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.Upd
         return reverse("task_detail_view", kwargs={"pk": self.object.id})
 
 
-class ConstructionObjectCreateView(LoginRequiredMixin, generic.CreateView):
-    model = ConstructionObject
-    fields = ['address', 'manager', 'client']
-    success_url = '/constructionobjects/'
-    template_name = 'new_construction_object.html'
+class ToolListView(generic.ListView):
+    model = Tool
+    template_name = 'tools_list.html'
+    context_object_name = "tools_list"
+    paginate_by = 10
+    ordering = 'inventory_number'
 
 
-class ConstructionObjectUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = ConstructionObject
-    fields = ['address', 'manager', 'client']
-    template_name = 'new_construction_object.html'
+class ToolDetailView(FormMixin, generic.DetailView):
+    model = Tool
+    template_name = 'tool_detail.html'
+    form_class = ToolCommentForm
+    context_object_name = "tool_detail"
 
     def get_success_url(self):
-        return reverse('construction_object_detail_view', kwargs={"pk": self.object.id})
+        return reverse('tool_detail_view', kwargs={"pk": self.object.id})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.tool = self.object
+        form.instance.employee = self.request.user
+        form.save()
+        return super(ToolDetailView, self).form_valid(form)
+
+
+class EmployeeToolsListView(LoginRequiredMixin, generic.ListView):
+    model = Tool
+    template_name = 'employee_tools_list.html'
+    context_object_name = 'employee_tools_list'
+    paginate_by = 10
+    ordering = 'inventory_number'
+
+    def get_queryset(self):
+        return Tool.objects.filter(employee=self.request.user).order_by('inventory_number')
+
+
+class ToolCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Tool
+    fields = ['title', 'inventory_number', 'status', 'employee', 'construction_object', 'picture']
+    success_url = '/tools/'
+    template_name = 'new_tool.html'
+
+
+class ToolUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Tool
+    fields = ['title', 'inventory_number', 'status', 'employee', 'construction_object', 'picture']
+    template_name = 'new_tool.html'
+
+    def get_success_url(self):
+        return reverse("tool_detail_view", kwargs={"pk": self.object.id})
