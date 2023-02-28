@@ -82,6 +82,8 @@
           <a href="{% url 'employee_tasks_list' %}">My tasks</a>
           <a href="{% url 'construction_objects_list_view' %}">Construction objects</a>
           <a href="{% url 'construction_object_create_view' %}">Add construction object</a>
+          <a href="{% url 'bills_list_view' %}">Invoices</a>
+          <a href="{% url 'clients_list_view' %}">Clients</a>
           <form action="{% url 'search_tools' %}" method="get">
             <input name="query" type="text" placeholder="Tool search">
           </form>

@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, reverse
 from django.views import generic
-from .models import Bill, ConstructionObject, Task, Tool
+from .models import Bill, Client, ConstructionObject, Task, Tool
 from .forms import ConstructionObjectCommentForm, TaskCommentForm, ToolCommentForm, TaskCreateForm
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -24,7 +24,35 @@ def search_tasks(request):
     return render(request, 'search_tasks.html', {'tasks_list': search_results, 'query': query})
 
 
-class ConstructionObjectListView(generic.ListView):
+class BillListView(LoginRequiredMixin, generic.ListView):
+    model = Bill
+    template_name = 'bills_list.html'
+    context_object_name = "bills_list"
+    paginate_by = 10
+    ordering = 'number'
+
+
+class BillDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Bill
+    template_name = 'bill_detail.html'
+    context_object_name = 'bill_detail'
+
+
+class ClientListView(LoginRequiredMixin, generic.ListView):
+    model = Client
+    template_name = 'clients_list.html'
+    context_object_name = "clients_list"
+    paginate_by = 10
+    ordering = 'title'
+
+
+class ClientDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Client
+    template_name = 'client_detail.html'
+    context_object_name = 'client_detail'
+
+
+class ConstructionObjectListView(LoginRequiredMixin, generic.ListView):
     model = ConstructionObject
     template_name = 'construction_objects_list.html'
     context_object_name = "construction_objects_list"
@@ -32,7 +60,7 @@ class ConstructionObjectListView(generic.ListView):
     ordering = 'address'
 
 
-class ConstructionObjectDetailView(FormMixin, generic.DetailView):
+class ConstructionObjectDetailView(LoginRequiredMixin, FormMixin, generic.DetailView):
     model = ConstructionObject
     template_name = 'construction_object_detail.html'
     form_class = ConstructionObjectCommentForm
@@ -72,7 +100,7 @@ class ConstructionObjectUpdateView(LoginRequiredMixin, generic.UpdateView):
         return reverse('construction_object_detail_view', kwargs={"pk": self.object.id})
 
 
-class TaskDetailView(FormMixin, generic.DetailView):
+class TaskDetailView(LoginRequiredMixin, FormMixin, generic.DetailView):
     model = Task
     template_name = 'task_detail.html'
     form_class = TaskCommentForm
@@ -146,7 +174,7 @@ class ManagerTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.Upd
         return reverse("task_detail_view", kwargs={"pk": self.object.id})
 
 
-class ToolListView(generic.ListView):
+class ToolListView(LoginRequiredMixin, generic.ListView):
     model = Tool
     template_name = 'tools_list.html'
     context_object_name = "tools_list"
@@ -154,7 +182,7 @@ class ToolListView(generic.ListView):
     ordering = 'inventory_number'
 
 
-class ToolDetailView(FormMixin, generic.DetailView):
+class ToolDetailView(LoginRequiredMixin, FormMixin, generic.DetailView):
     model = Tool
     template_name = 'tool_detail.html'
     form_class = ToolCommentForm

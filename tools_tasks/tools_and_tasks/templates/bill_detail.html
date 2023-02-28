@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Invoice{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+  <h1>Invoice details:</h1>
+    <p><strong>Date: </strong>{{ bill_detail.date }}</p>
+    <p><strong>Number: </strong> {{ bill_detail.number }}</p>
+    <p><strong>Issued to: </strong> {{ bill_detail.client }}</p>
+    <p><strong>Works done at: </strong> {{ bill_detail.construction_object }}</p>
+    <p><strong>Amount: </strong> {{ bill_detail.amount }}</p>
+    <p><strong>Payment day: </strong> {{ bill_detail.payment_date }}</p>
+    <p><strong>Status: </strong> {{ bill_detail.get_status_display }}</p>
+    <br>
+    <div>
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Edit</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Bills{% endblock %}
+
+{% block content %}
+
+  <h1  style="text-align:center">Invoices</h1>
+  {% if bills_list %}
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Invoice number</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Construction object</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Payment date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in bills_list %}
+                    <tr>
+                        <th scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.date }}</a></th>
+                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.number }}</a></td>
+                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.client }}</a></td>
+                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.construction_object }}</a></td>
+                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.amount }}</a></td>
+                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.payment_date }}</a></td>
+                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.get_status_display }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+  {% else %}
+    <p>No bills at the moment.</p>
+  {% endif %}
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">back</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }} from {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">forward</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
+{% endblock %}

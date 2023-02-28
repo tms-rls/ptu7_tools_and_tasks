@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+
+  <h1  style="text-align:center">Clients</h1>
+  {% if clients_list %}
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact phone</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients_list %}
+                    <tr>
+                        <th scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.title }}</a></th>
+                        <td scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_phone }}</a></td>
+                        <td scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_email }}</a></td>
+                        <td scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_address }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+  {% else %}
+    <p>No clients at the moment.</p>
+  {% endif %}
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">back</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }} from {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">forward</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
+{% endblock %}
