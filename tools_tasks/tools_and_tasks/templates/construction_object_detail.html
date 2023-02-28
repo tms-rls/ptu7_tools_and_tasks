@@ -11,6 +11,12 @@
     <p><strong>Address:</strong>{{ construction_object_detail.address }}</p>
     <p><strong>Client:</strong> {{ construction_object_detail.client }}</p>
     <p><strong>Manager:</strong> {{ construction_object_detail.manager }}</p>
+    <br>
+     {% if user.is_authenticated %}
+        <div>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'construction_object_update_view' construction_object_detail.pk %}">Edit</a>
+        </div>
+     {% endif %}
 
   <hr>
   <h2>Comments:</h2>

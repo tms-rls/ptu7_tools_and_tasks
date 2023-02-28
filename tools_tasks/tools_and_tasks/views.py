@@ -187,3 +187,19 @@ class ManagerTaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.Upd
 
     def get_success_url(self):
         return reverse("task_detail_view", kwargs={"pk": self.object.id})
+
+
+class ConstructionObjectCreateView(LoginRequiredMixin, generic.CreateView):
+    model = ConstructionObject
+    fields = ['address', 'manager', 'client']
+    success_url = '/constructionobjects/'
+    template_name = 'new_construction_object.html'
+
+
+class ConstructionObjectUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = ConstructionObject
+    fields = ['address', 'manager', 'client']
+    template_name = 'new_construction_object.html'
+
+    def get_success_url(self):
+        return reverse('construction_object_detail_view', kwargs={"pk": self.object.id})
