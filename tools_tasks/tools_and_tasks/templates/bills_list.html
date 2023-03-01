@@ -36,7 +36,11 @@
   {% else %}
     <p>No bills at the moment.</p>
   {% endif %}
-
+   <br>
+  <form action="{% url 'search_bills' %}" method="get">
+    <input name="query" type="text" placeholder="Invoice search">
+  </form>
+   <br>
   <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}

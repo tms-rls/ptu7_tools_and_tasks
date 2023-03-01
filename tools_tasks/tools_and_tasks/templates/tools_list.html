@@ -30,7 +30,11 @@
   {% else %}
     <p>No tools at the moment.</p>
   {% endif %}
-
+   <br>
+  <form action="{% url 'search_tools' %}" method="get">
+    <input name="query" type="text" placeholder="Tool search">
+  </form>
+   <br>
   <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}

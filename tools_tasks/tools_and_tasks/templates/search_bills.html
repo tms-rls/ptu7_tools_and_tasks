@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Bill search results{% endblock %}
+
+{% block content %}
+  <h1>Search "{{query}}" results:</h1>
+  <br>
+  {% if bills_list %}
+  <ul>
+    {% for bill in bills_list %}
+      <li>
+        <a href="{% url 'bill_detail_view' bill.pk %}">
+          {{ bill.date }} {{bill.number}} {{ bill.client }} {{ bill.construction_object }} {{ bill.amount }} {{ bill.payment_date }} {{ bill.get_status_display }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No invoices for "{{query}}" query</p>
+  {% endif %}
+
+{% endblock %}

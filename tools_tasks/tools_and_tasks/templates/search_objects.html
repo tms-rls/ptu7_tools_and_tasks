@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Construction object search results{% endblock %}
+
+{% block content %}
+  <h1>Search "{{query}}" results:</h1>
+  <br>
+  {% if objects_list %}
+  <ul>
+    {% for object in objects_list %}
+      <li>
+        <a href="{% url 'construction_object_detail_view' object.pk %}">
+          {{ object.address  }} {{object.client}} {{ object.manager }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No construction objects for "{{query}}" query</p>
+  {% endif %}
+
+{% endblock %}

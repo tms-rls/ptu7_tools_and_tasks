@@ -31,7 +31,13 @@
   {% else %}
     <p>No assigned tasks.</p>
   {% endif %}
-
+   <br>
+   <div>
+      <form action="{% url 'search_tasks' %}" method="get">
+        <input name="query" type="text" placeholder="Task search">
+      </form>
+   </div>
+   <br>
   <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}

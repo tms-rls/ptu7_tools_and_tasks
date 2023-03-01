@@ -12,16 +12,36 @@ def start(request):
     return render(request, 'start.html')
 
 
-def search_tools(request):
+def search_bills(request):
     query = request.GET.get('query')
-    search_results = Tool.objects.filter(Q(title__icontains=query) | Q(inventory_number__icontains=query))
-    return render(request, 'search_tools.html', {'tools_list': search_results, 'query': query})
+    search_results = Bill.objects.filter(Q(number__icontains=query) |
+                                         Q(client__title__icontains=query) |
+                                         Q(construction_object__address__icontains=query))
+    return render(request, 'search_bills.html', {'bills_list': search_results, 'query': query})
+
+
+def search_clients(request):
+    query = request.GET.get('query')
+    search_results = Client.objects.filter(Q(title__icontains=query))
+    return render(request, 'search_clients.html', {'clients_list': search_results, 'query': query})
+
+
+def search_objects(request):
+    query = request.GET.get('query')
+    search_results = ConstructionObject.objects.filter(Q(address__icontains=query) | Q(client__title__icontains=query))
+    return render(request, 'search_objects.html', {'objects_list': search_results, 'query': query})
 
 
 def search_tasks(request):
     query = request.GET.get('query')
     search_results = Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'search_tasks.html', {'tasks_list': search_results, 'query': query})
+
+
+def search_tools(request):
+    query = request.GET.get('query')
+    search_results = Tool.objects.filter(Q(title__icontains=query) | Q(inventory_number__icontains=query))
+    return render(request, 'search_tools.html', {'tools_list': search_results, 'query': query})
 
 
 class BillListView(LoginRequiredMixin, generic.ListView):

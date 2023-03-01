@@ -73,7 +73,6 @@
     </head>
     <body>
       <div class="topnav">
-        <a class="active" href="{% url 'start' %}">Start</a>
         {% if user.is_authenticated %}
           <a href="{% url 'tools_list_view' %}">Tools</a>
           <a href="{% url 'tool_create_view' %}">Add tool</a>
@@ -86,16 +85,8 @@
           <a href="{% url 'bill_create_view' %}">Add invoice</a>
           <a href="{% url 'clients_list_view' %}">Clients</a>
           <a href="{% url 'client_create_view' %}">Add client</a>
-          <form action="{% url 'search_tools' %}" method="get">
-            <input name="query" type="text" placeholder="Tool search">
-          </form>
-          <form action="{% url 'search_tasks' %}" method="get">
-            <input name="query" type="text" placeholder="Task search">
-          </form>
           <a class="split">Logged as: {{ user.get_username }}</a>
           <a href="{% url 'logout' %}" class="split">Log out</a>
-        {% else %}
-          <a href="{% url 'login' %}" class="split">Log in</a></li>
         {% endif %}
       </div>
 

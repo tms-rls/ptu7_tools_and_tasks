@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Client search results{% endblock %}
+
+{% block content %}
+  <h1>Search "{{query}}" results:</h1>
+  <br>
+  {% if clients_list %}
+  <ul>
+    {% for client in clients_list %}
+      <li>
+        <a href="{% url 'client_detail_view' client.pk %}">
+          {{ client.title }} {{client.contact_phone}} {{ client.contact_email }} {{ client.contact_address }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No clients for "{{query}}" query</p>
+  {% endif %}
+
+{% endblock %}

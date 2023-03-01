@@ -30,6 +30,9 @@ urlpatterns = [
     path('tools/<int:pk>', views.ToolDetailView.as_view(), name='tool_detail_view'),
     path('tools/new', views.ToolCreateView.as_view(), name='tool_create_view'),
     path('tools/<int:pk>/update', views.ToolUpdateView.as_view(), name='tool_update_view'),
-    path('searchtools/', views.search_tools, name='search_tools'),
+    path('searchbills/', views.search_bills, name='search_bills'),
+    path('searchclients/', views.search_clients, name='search_clients'),
+    path('searchobjects/', views.search_objects, name='search_objects'),
     path('searchtasks/', views.search_tasks, name='search_tasks'),
+    path('searchtools/', views.search_tools, name='search_tools'),
 ]

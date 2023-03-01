@@ -16,7 +16,11 @@
   {% else %}
     <p>No construction objects at the moment.</p>
   {% endif %}
-
+   <br>
+  <form action="{% url 'search_objects' %}" method="get">
+    <input name="query" type="text" placeholder="Construction object search">
+  </form>
+   <br>
   <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
