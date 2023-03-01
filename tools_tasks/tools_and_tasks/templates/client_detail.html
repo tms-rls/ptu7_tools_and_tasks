@@ -13,7 +13,7 @@
     <p><strong>Address: </strong> {{ client_detail.contact_address }}</p>
     <br>
     <div>
-      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Edit</a>
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'client_update_view' client_detail.pk %}">Edit</a>
     </div>
 
 {% endblock %}

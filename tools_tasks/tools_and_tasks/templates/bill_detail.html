@@ -16,7 +16,7 @@
     <p><strong>Status: </strong> {{ bill_detail.get_status_display }}</p>
     <br>
     <div>
-      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Edit</a>
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'bill_update_view' bill_detail.pk %}">Edit</a>
     </div>
 
 {% endblock %}

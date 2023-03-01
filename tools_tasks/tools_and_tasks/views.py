@@ -27,15 +27,31 @@ def search_tasks(request):
 class BillListView(LoginRequiredMixin, generic.ListView):
     model = Bill
     template_name = 'bills_list.html'
-    context_object_name = "bills_list"
+    context_object_name = 'bills_list'
     paginate_by = 10
-    ordering = 'number'
+    ordering = '-number'
 
 
 class BillDetailView(LoginRequiredMixin, generic.DetailView):
     model = Bill
     template_name = 'bill_detail.html'
     context_object_name = 'bill_detail'
+
+
+class BillCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Bill
+    fields = ['date', 'number', 'client', 'construction_object', 'amount', 'payment_date', 'status']
+    success_url = '/bills/'
+    template_name = 'new_bill.html'
+
+
+class BillUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Bill
+    fields = ['date', 'number', 'client', 'construction_object', 'amount', 'payment_date', 'status']
+    template_name = 'new_bill.html'
+
+    def get_success_url(self):
+        return reverse("bill_detail_view", kwargs={"pk": self.object.id})
 
 
 class ClientListView(LoginRequiredMixin, generic.ListView):
@@ -50,6 +66,22 @@ class ClientDetailView(LoginRequiredMixin, generic.DetailView):
     model = Client
     template_name = 'client_detail.html'
     context_object_name = 'client_detail'
+
+
+class ClientCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Client
+    fields = ['title', 'contact_phone', 'contact_email', 'contact_address']
+    success_url = '/clients/'
+    template_name = 'new_client.html'
+
+
+class ClientUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Client
+    fields = ['title', 'contact_phone', 'contact_email', 'contact_address']
+    template_name = 'new_client.html'
+
+    def get_success_url(self):
+        return reverse("client_detail_view", kwargs={"pk": self.object.id})
 
 
 class ConstructionObjectListView(LoginRequiredMixin, generic.ListView):
@@ -131,7 +163,7 @@ class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Task.objects.filter(Q(manager=self.request.user) | Q(employee=self.request.user)).order_by('date')
+        return Task.objects.filter(Q(manager=self.request.user) | Q(employee=self.request.user)).order_by('-date')
 
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
