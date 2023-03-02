@@ -1,9 +1,10 @@
 
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', views.start, name='start'),
     path('bills/', views.BillListView.as_view(), name='bills_list_view'),
     path('bills/<int:pk>', views.BillDetailView.as_view(), name='bill_detail_view'),

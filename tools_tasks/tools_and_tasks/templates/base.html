@@ -72,21 +72,38 @@
         </style>
     </head>
     <body>
+    {% load i18n %}
       <div class="topnav">
+        <div>
+          <form action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}"/>
+              <select name="language" onchange="this.form.submit()">
+                {% load static %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% for lang in LANGUAGES %}
+                  <option style="background-image: url({% static 'img/lt.png' %});" value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected" {% endif %}>
+                    {{ lang.1 }}
+                  </option>
+                {% endfor %}
+              </select>
+          </form>
+        </div>
         {% if user.is_authenticated %}
-          <a href="{% url 'tools_list_view' %}">Tools</a>
-          <a href="{% url 'tool_create_view' %}">Add tool</a>
-          <a href="{% url 'employee_tools_list' %}">My tools</a>
-          <a href="{% url 'task_create_view' %}">Add task</a>
-          <a href="{% url 'employee_tasks_list' %}">My tasks</a>
-          <a href="{% url 'construction_objects_list_view' %}">Construction objects</a>
-          <a href="{% url 'construction_object_create_view' %}">Add construction object</a>
-          <a href="{% url 'bills_list_view' %}">Invoices</a>
-          <a href="{% url 'bill_create_view' %}">Add invoice</a>
-          <a href="{% url 'clients_list_view' %}">Clients</a>
-          <a href="{% url 'client_create_view' %}">Add client</a>
-          <a class="split">Logged as: {{ user.get_username }}</a>
-          <a href="{% url 'logout' %}" class="split">Log out</a>
+          <a href="{% url 'tools_list_view' %}">{% trans "Tools" %}</a>
+          <a href="{% url 'tool_create_view' %}">{% trans "Add tool" %}</a>
+          <a href="{% url 'employee_tools_list' %}">{% trans "My tools" %}</a>
+          <a href="{% url 'task_create_view' %}">{% trans "Add task" %}</a>
+          <a href="{% url 'employee_tasks_list' %}">{% trans "My tasks" %}</a>
+          <a href="{% url 'construction_objects_list_view' %}">{% trans "Construction objects" %}</a>
+          <a href="{% url 'construction_object_create_view' %}">{% trans "Add construction object" %}</a>
+          <a href="{% url 'bills_list_view' %}">{% trans "Invoices" %}</a>
+          <a href="{% url 'bill_create_view' %}">{% trans "Add invoice" %}</a>
+          <a href="{% url 'clients_list_view' %}">{% trans "Clients" %}</a>
+          <a href="{% url 'client_create_view' %}">{% trans "Add client" %}</a>
+          <a class="split">{% trans "Logged as" %}: {{ user.get_username }}</a>
+          <a href="{% url 'logout' %}" class="split">{% trans "Log out" %}</a>
         {% endif %}
       </div>
 
