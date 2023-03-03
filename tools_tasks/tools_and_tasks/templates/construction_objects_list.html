@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Construction objects{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Construction objects" %}{% endblock %}
 
 {% block content %}
-  <h1  style="text-align:center">Construction objects</h1>
+  <h1  style="text-align:center">{% trans "Construction objects" %}</h1>
   {% if construction_objects_list %}
     <ol>
       {% for construction_object in construction_objects_list %}
@@ -14,27 +16,27 @@
       {% endfor %}
     </ol>
   {% else %}
-    <p>No construction objects at the moment.</p>
+    <p>{% trans "No construction objects at the moment" %}.</p>
   {% endif %}
    <br>
   <form action="{% url 'search_objects' %}" method="get">
-    <input name="query" type="text" placeholder="Construction object search">
+    <input name="query" type="text" placeholder="{% blocktrans %}Construction object search{% endblocktrans %}">
   </form>
    <br>
   <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; First</a>
-            <a href="?page={{ page_obj.previous_page_number }}">back</a>
+            <a href="?page=1">&laquo; {% trans "First" %}</a>
+            <a href="?page={{ page_obj.previous_page_number }}">{% trans "back" %}</a>
         {% endif %}
 
         <span class="current">
-            {{ page_obj.number }} from {{ page_obj.paginator.num_pages }}
+            {{ page_obj.number }} {% trans "from" %} {{ page_obj.paginator.num_pages }}
         </span>
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">forward</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}">{% trans "forward" %}</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">{% trans "Last" %} &raquo;</a>
         {% endif %}
     </span>
   </div>

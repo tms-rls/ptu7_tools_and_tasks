@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Construction object{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Construction object" %}{% endblock %}
 
 {% load static %}
 
 {% block content %}
 
-  <h1>Construction object details:</h1>
+  <h1>{% trans "Construction object details" %}:</h1>
 
-    <p><strong>Address:</strong>{{ construction_object_detail.address }}</p>
-    <p><strong>Client:</strong> {{ construction_object_detail.client }}</p>
-    <p><strong>Manager:</strong> {{ construction_object_detail.manager }}</p>
+    <p><strong>{% trans "Address" %}:</strong>{{ construction_object_detail.address }}</p>
+    <p><strong>{% trans "Client" %}:</strong> {{ construction_object_detail.client }}</p>
+    <p><strong>{% trans "Manager" %}:</strong> {{ construction_object_detail.manager }}</p>
     <br>
      {% if user.is_authenticated %}
         <div>
-          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'construction_object_update_view' construction_object_detail.pk %}">Edit</a>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'construction_object_update_view' construction_object_detail.pk %}">{% trans "Edit" %}</a>
         </div>
      {% endif %}
 
   <hr>
-  <h2>Comments:</h2>
+  <h2>{% trans "Comments" %}:</h2>
   {% if construction_object_detail.construction_object_comments.all %}
     {% for comment in construction_object_detail.construction_object_comments.all %}
       <hr>
@@ -27,18 +29,18 @@
       <p>{{ comment.text }}</p>
     {% endfor %}
   {% else %}
-    <p>No comments yet</p>
+    <p>{% trans "No comments yet" %}</p>
   {% endif %}
 
   {% if user.is_authenticated %}
       <div class="fieldWrapper">
            <br/>
-          <h4>Post comment:</h4>
+          <h4>{% trans "Post comment" %}:</h4>
           <form action="" method="post">
               {% csrf_token %}
               {{ form.text }}
               <br/>
-              <input type="submit" value="Post">
+              <input type="submit" value="{% blocktrans %}Post{% endblocktrans %}">
           </form>
       </div>
   {% endif %}

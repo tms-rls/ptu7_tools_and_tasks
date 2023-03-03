@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Client search results{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Client search results" %}{% endblock %}
 
 {% block content %}
-  <h1>Search "{{query}}" results:</h1>
+  <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
   {% if clients_list %}
   <ul>
@@ -16,7 +18,7 @@
     {% endfor %}
   </ul>
   {% else %}
-    <p>No clients for "{{query}}" query</p>
+    <p>{% trans "No clients for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}
 
 {% endblock %}

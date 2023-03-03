@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}New invoice / Update invoice{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "New invoice / Update invoice" %}{% endblock %}
 
 {% block content %}
 
@@ -10,11 +12,11 @@
         <form method="POST">
             {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">New invoice / Update invoice</legend>
+                    <legend class="border-bottom mb-4">{% trans "New invoice / Update invoice" %}</legend>
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Submit</button>
+                    <button class="btn btn-outline-info" type="submit">{% trans "Submit" %}</button>
                 </div>
         </form>
     </div>

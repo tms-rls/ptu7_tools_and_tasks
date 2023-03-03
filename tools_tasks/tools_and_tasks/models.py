@@ -12,8 +12,9 @@ utc = pytz.UTC
 class Bill(models.Model):
     date = models.DateField(verbose_name=_('Date'), null=True, blank=True)
     number = models.CharField(verbose_name=_('Number of bill'), max_length=10, unique=True)
-    client = models.ForeignKey(to='Client', on_delete=models.SET_NULL, null=True, blank=True)
-    construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True)
+    client = models.ForeignKey(to='Client', verbose_name=_('Client'), on_delete=models.SET_NULL, null=True, blank=True)
+    construction_object = models.ForeignKey(to='ConstructionObject', verbose_name=_('Construction object'),
+                                            on_delete=models.SET_NULL, null=True, blank=True)
     amount = models.FloatField(verbose_name=_('Amount'))
     payment_date = models.DateField(verbose_name=_('Payment by date'), null=True, blank=True)
     status_choices = (
@@ -42,8 +43,8 @@ class Client(models.Model):
 
 class ConstructionObject(models.Model):
     address = models.CharField(verbose_name=_('Address'), max_length=200)
-    manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    client = models.ForeignKey(to='Client', on_delete=models.SET_NULL, null=True, blank=True)
+    manager = models.ForeignKey(User, verbose_name=_('Manager'), on_delete=models.SET_NULL, null=True, blank=True)
+    client = models.ForeignKey(to='Client', verbose_name=_('Client'), on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f"{self.address}"
@@ -55,9 +56,10 @@ class ConstructionObject(models.Model):
 
 
 class ConstructionObjectComment(models.Model):
-    construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True,
+    construction_object = models.ForeignKey(to='ConstructionObject', verbose_name=_('Construction object'),
+                                            on_delete=models.SET_NULL, null=True, blank=True,
                                             related_name='construction_object_comments')
-    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, verbose_name=_('Employee'), on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(verbose_name=_('Date'), auto_now_add=True)
     text = models.TextField(verbose_name=_('Comment'), max_length=2000)
 
@@ -69,12 +71,13 @@ class ConstructionObjectComment(models.Model):
 
 
 class Task(models.Model):
-    manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    manager = models.ForeignKey(User, verbose_name=_('Manager'), on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
     title = models.CharField(verbose_name=_('Task'), max_length=100)
     description = HTMLField(verbose_name=_('Description'), null=True, blank=True)
     deadline = models.DateTimeField(verbose_name=_("Accomplish till"), null=True, blank=True)
-    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='manager')
+    employee = models.ForeignKey(User, verbose_name=_('Employee'), on_delete=models.SET_NULL, null=True, blank=True,
+                                 related_name='employee')
     status_choices = (
         ('a', _('Assigned')),
         ('p', _('In progress')),
@@ -104,7 +107,7 @@ class Task(models.Model):
 class TaskComment(models.Model):
     task = models.ForeignKey(to='Task', verbose_name=_('Task'), on_delete=models.SET_NULL, null=True, blank=True,
                              related_name='task_comments')
-    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, verbose_name=_('Employee'), on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(verbose_name=_('Date'), auto_now_add=True)
     text = models.TextField(verbose_name=_('Comment'), max_length=2000)
 
@@ -118,8 +121,9 @@ class TaskComment(models.Model):
 class Tool(models.Model):
     title = models.CharField(verbose_name=_('Tool'), max_length=100)
     inventory_number = models.CharField(verbose_name=_('Inventory number'), max_length=100, unique=True)
-    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    construction_object = models.ForeignKey(to='ConstructionObject', on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, verbose_name=_('Employee'), on_delete=models.SET_NULL, null=True, blank=True)
+    construction_object = models.ForeignKey(to='ConstructionObject', verbose_name=_('Construction object'),
+                                            on_delete=models.SET_NULL, null=True, blank=True)
     status_choices = (
         ('a', _('Available')),
         ('b', _('Broken')),
@@ -141,7 +145,7 @@ class Tool(models.Model):
 class ToolComment(models.Model):
     tool = models.ForeignKey(to='Tool', verbose_name=_('Tool'), on_delete=models.SET_NULL, null=True, blank=True,
                              related_name='tool_comments')
-    employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    employee = models.ForeignKey(User, verbose_name=_('Employee'), on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(verbose_name=_('Date'), auto_now_add=True)
     text = models.TextField(verbose_name=_('Comment'), max_length=2000)
 

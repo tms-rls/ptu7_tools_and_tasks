@@ -1,19 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Client{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Client" %}{% endblock %}
 
 {% load static %}
 
 {% block content %}
 
-  <h1>Client details:</h1>
-    <p><strong>Name: </strong>{{ client_detail.title }}</p>
-    <p><strong>Contact phone: </strong> {{ client_detail.contact_phone }}</p>
-    <p><strong>E-mail: </strong> {{ client_detail.contact_email }}</p>
-    <p><strong>Address: </strong> {{ client_detail.contact_address }}</p>
+  <h1>{% trans "Client details" %}:</h1>
+    <p><strong>{% trans "Name" %}: </strong>{{ client_detail.title }}</p>
+    <p><strong>{% trans "Contact phone" %}: </strong> {{ client_detail.contact_phone }}</p>
+    <p><strong>{% trans "E-mail" %}: </strong> {{ client_detail.contact_email }}</p>
+    <p><strong>{% trans "Address" %}: </strong> {{ client_detail.contact_address }}</p>
     <br>
     <div>
-      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'client_update_view' client_detail.pk %}">Edit</a>
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'client_update_view' client_detail.pk %}">
+        {% trans "Edit" %}
+      </a>
     </div>
 
 {% endblock %}

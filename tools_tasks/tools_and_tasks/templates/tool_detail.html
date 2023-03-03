@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Tool{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Tool" %}{% endblock %}
 
 {% load static %}
 
@@ -13,19 +15,19 @@
         <img src="{% static 'images/no-image.png' %}" style="width:300px;height:400px;">
       {% endif %}
   <br>
-  <p><strong>Tool inventory number:</strong>{{ tool_detail.inventory_number }}</p>
-  <p><strong>Status:</strong> {{ tool_detail.get_status_display }}</p>
-  <p><strong>In possession:</strong> {{ tool_detail.employee }}</p>
-  <p><strong>Construction object:</strong> {{ tool_detail.construction_object }}</p>
+  <p><strong>{% trans "Tool inventory number" %}: </strong>{{ tool_detail.inventory_number }}</p>
+  <p><strong>{% trans "Status" %}: </strong> {{ tool_detail.get_status_display }}</p>
+  <p><strong>{% trans "In possession" %}: </strong> {{ tool_detail.employee }}</p>
+  <p><strong>{% trans "Construction object" %}: </strong> {{ tool_detail.construction_object }}</p>
   <br>
   {% if user.is_authenticated %}
       <div>
-        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'tool_update_view' tool_detail.pk %}">Edit tool</a>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'tool_update_view' tool_detail.pk %}">{% trans "Edit tool" %}</a>
       </div>
   {% endif %}
   <br>
   <hr>
-  <h2>Comments:</h2>
+  <h2>{% trans "Comments" %}:</h2>
   {% if tool_detail.tool_comments.all %}
     {% for comment in tool_detail.tool_comments.all %}
       <hr>
@@ -33,18 +35,18 @@
       <p>{{ comment.text }}</p>
     {% endfor %}
   {% else %}
-    <p>No comments yet</p>
+    <p>{% trans "No comments yet" %}</p>
   {% endif %}
 
   {% if user.is_authenticated %}
       <div class="fieldWrapper">
            <br/>
-          <h4>Post comment:</h4>
+          <h4>{% trans "Post comment" %}:</h4>
           <form action="" method="post">
               {% csrf_token %}
               {{ form.text }}
               <br/>
-              <input type="submit" value="Post">
+              <input type="submit" value="{% blocktrans %}Post{% endblocktrans %}">
           </form>
       </div>
   {% endif %}

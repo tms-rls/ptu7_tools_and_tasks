@@ -43,7 +43,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('date', 'title', 'employee', 'deadline', 'status', 'display_task_comments')
+    list_display = ('title', 'manager', 'date', 'employee', 'deadline', 'status', 'display_task_comments')
 
 
 class BillAdmin(admin.ModelAdmin):

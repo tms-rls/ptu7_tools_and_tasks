@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Start{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Start" %}{% endblock %}
 
 {% block content %}
-<h1 style="text-align: center">Welcome to our wonderful site</h1>
+<h1 style="text-align: center">{% trans "Welcome to our site" %}</h1>
 <br>
 <br>
 <div>
-    <p>Please <a href="{% url 'login'%}">log in</a></p>
+    {% if not user.is_authenticated %}
+        <p>{% trans "Please" %} <a href="{% url 'login'%}">{% trans "log in" %}</a></p>
+    {% endif %}
 </div>
 {% endblock %}

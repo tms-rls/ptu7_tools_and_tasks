@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}New construction object / Update construction object{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "New construction object / Update construction object" %}{% endblock %}
 
 {% block content %}
 
@@ -10,11 +12,11 @@
         <form method="POST">
             {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">New construction object / Update construction object</legend>
+                    <legend class="border-bottom mb-4">{% trans "New construction object / Update construction object" %}</legend>
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Submit</button>
+                    <button class="btn btn-outline-info" type="submit">{% trans "Submit" %}</button>
                 </div>
         </form>
     </div>
