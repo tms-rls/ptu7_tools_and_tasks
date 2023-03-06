@@ -5,10 +5,23 @@
 {% block title %}{% trans "Start" %}{% endblock %}
 
 {% block content %}
-<h1 style="text-align: center">{% trans "Welcome to our site" %}</h1>
+<h1 style="text-align: center">{% trans "Welcome to our website" %}</h1>
 <br>
     {% if user.is_authenticated %}
         <p>{% trans "Please choose from the following menu options" %}:</p>
+            <ul style=line-height:2;>
+                <li><a href="{% url 'tools_list_view' %}">{% trans "Tools" %}</a></li>
+                <li><a href="{% url 'tool_create_view' %}">{% trans "Add tool" %}</a></li>
+                <li><a href="{% url 'employee_tools_list' %}">{% trans "My tools" %}</a></li>
+                <li><a href="{% url 'task_create_view' %}">{% trans "Add task" %}</a></li>
+                <li><a href="{% url 'employee_tasks_list' %}">{% trans "My tasks" %}</a></li>
+                <li><a href="{% url 'construction_objects_list_view' %}">{% trans "Construction objects" %}</a></li>
+                <li><a href="{% url 'construction_object_create_view' %}">{% trans "Add construction object" %}</a></li>
+                <li><a href="{% url 'bills_list_view' %}">{% trans "Invoices" %}</a></li>
+                <li><a href="{% url 'bill_create_view' %}">{% trans "Add invoice" %}</a></li>
+                <li><a href="{% url 'clients_list_view' %}">{% trans "Clients" %}</a></li>
+                <li><a href="{% url 'client_create_view' %}">{% trans "Add client" %}</a></li>
+            </ul>
     {% else %}
         <p>{% trans "Please" %} <a href="{% url 'login'%}">{% trans "log in" %}</a> {% trans "to access the website services" %}</p>
     {% endif %}
