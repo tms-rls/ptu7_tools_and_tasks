@@ -91,6 +91,7 @@
           </form>
         </div>
         {% if user.is_authenticated %}
+          <a href="{% url 'start' %}">{% trans "Start" %}</a>
           <a href="{% url 'tools_list_view' %}">{% trans "Tools" %}</a>
           <a href="{% url 'tool_create_view' %}">{% trans "Add tool" %}</a>
           <a href="{% url 'employee_tools_list' %}">{% trans "My tools" %}</a>
