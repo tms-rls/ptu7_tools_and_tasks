@@ -7,30 +7,36 @@
 {% block content %}
 
   <h1  style="text-align:center">{% trans "Invoices" %}</h1>
-  {% if bills_list %}
 
-        <table class="table table-bordered">
+   <br>
+  <form action="{% url 'search_bills' %}" method="get">
+    <input name="query" type="text" placeholder="{% blocktrans %}Invoice search{% endblocktrans %}">
+  </form>
+   <br>
+
+  {% if bills_list %}
+        <table>
             <thead>
                 <tr>
-                    <th scope="col">{% trans "Date" %}</th>
-                    <th scope="col">{% trans "Invoice number" %}</th>
-                    <th scope="col">{% trans "Client" %}</th>
-                    <th scope="col">{% trans "Construction object" %}</th>
-                    <th scope="col">{% trans "Amount" %}</th>
-                    <th scope="col">{% trans "Payment date" %}</th>
-                    <th scope="col">{% trans "Status" %}</th>
+                    <th style="padding:10px">{% trans "Date" %}</th>
+                    <th style="padding:10px">{% trans "Number" %}</th>
+                    <th style="padding:10px">{% trans "Client" %}</th>
+                    <th style="padding:10px">{% trans "Const. object" %}</th>
+                    <th style="padding:10px">{% trans "Amount" %}</th>
+                    <th style="padding:10px">{% trans "Status" %}</th>
+                    <th style="padding:10px">{% trans "Payment date" %}</th>
                 </tr>
             </thead>
             <tbody>
                 {% for bill in bills_list %}
                     <tr>
-                        <th scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.date }}</a></th>
-                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.number }}</a></td>
-                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.client }}</a></td>
-                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.construction_object }}</a></td>
-                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.amount }}</a></td>
-                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.payment_date }}</a></td>
-                        <td scope="row"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.get_status_display }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.date }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.number }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.client }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.construction_object }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.amount }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.get_status_display }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.payment_date }}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -38,12 +44,11 @@
   {% else %}
     <p>{% trans "No bills at the moment" %}.</p>
   {% endif %}
+
    <br>
-  <form action="{% url 'search_bills' %}" method="get">
-    <input name="query" type="text" placeholder="{% blocktrans %}Invoice search{% endblocktrans %}">
-  </form>
    <br>
-  <div class="pagination">
+
+  <div class="pagination" style="text-align:center">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; {% trans "First" %}</a>
