@@ -8,20 +8,39 @@
 
 {% block content %}
 
-  <h1>{% trans "Construction object details" %}:</h1>
+  <h1 style="text-align:center">{% trans "Construction object details" %}</h1>
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Address" %}: </strong></td>
+        <td style="padding:10px">{{ construction_object_detail.address }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Client" %}: </strong></td>
+        <td style="padding:10px">{{ construction_object_detail.client }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Manager" %}: </strong></td>
+        <td style="padding:10px">{{ construction_object_detail.manager }}</td>
+      </tr>
+    </table>
 
-    <p><strong>{% trans "Address" %}:</strong>{{ construction_object_detail.address }}</p>
-    <p><strong>{% trans "Client" %}:</strong> {{ construction_object_detail.client }}</p>
-    <p><strong>{% trans "Manager" %}:</strong> {{ construction_object_detail.manager }}</p>
-    <br>
+  <br>
+
      {% if user.is_authenticated %}
         <div>
           <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'construction_object_update_view' construction_object_detail.pk %}">{% trans "Edit" %}</a>
         </div>
      {% endif %}
 
+  <br>
   <hr>
+
   <h2>{% trans "Comments" %}:</h2>
+
   {% if construction_object_detail.construction_object_comments.all %}
     {% for comment in construction_object_detail.construction_object_comments.all %}
       <hr>

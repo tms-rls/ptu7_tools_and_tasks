@@ -6,13 +6,13 @@
 
 {% block content %}
 
-  <h1  style="text-align:center">{% trans "Clients" %}</h1>
+  <h1 style="text-align:center">{% trans "Clients" %}</h1>
 
-   <br>
   <form action="{% url 'search_clients' %}" method="get">
     <input name="query" type="text" placeholder="{% blocktrans %}Clients search{% endblocktrans %}">
   </form>
-   <br>
+
+  <br>
 
   {% if clients_list %}
         <table>
@@ -59,4 +59,5 @@
         {% endif %}
     </span>
   </div>
+
 {% endblock %}

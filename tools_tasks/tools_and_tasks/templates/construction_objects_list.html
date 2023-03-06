@@ -5,25 +5,41 @@
 {% block title %}{% trans "Construction objects" %}{% endblock %}
 
 {% block content %}
-  <h1  style="text-align:center">{% trans "Construction objects" %}</h1>
-  {% if construction_objects_list %}
-    <ol>
-      {% for construction_object in construction_objects_list %}
-        <li>
-          <a href="{% url 'construction_object_detail_view' construction_object.pk %}">
-            {{ construction_object.address }} - {{construction_object.client}}</a>
-        </li>
-      {% endfor %}
-    </ol>
-  {% else %}
-    <p>{% trans "No construction objects at the moment" %}.</p>
-  {% endif %}
-   <br>
+
+  <h1 style="text-align:center">{% trans "Construction objects" %}</h1>
+
   <form action="{% url 'search_objects' %}" method="get">
     <input name="query" type="text" placeholder="{% blocktrans %}Construction object search{% endblocktrans %}">
   </form>
+
+  <br>
+
+  {% if construction_objects_list %}
+    <table>
+        <thead>
+            <tr>
+                <th style="padding:10px">{% trans "Address" %}</th>
+                <th style="padding:10px">{% trans "Client" %}</th>
+                <th style="padding:10px">{% trans "Manager" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for construction_object in construction_objects_list %}
+                <tr>
+                    <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.address }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.client }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.manager }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  {% else %}
+    <p>{% trans "No construction objects at the moment" %}.</p>
+  {% endif %}
+
    <br>
-  <div class="pagination">
+
+  <div class="pagination" style="text-align:center">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; {% trans "First" %}</a>
