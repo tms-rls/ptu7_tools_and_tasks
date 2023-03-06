@@ -8,12 +8,31 @@
 
 {% block content %}
 
-  <h1>{% trans "Client details" %}:</h1>
-    <p><strong>{% trans "Name" %}: </strong>{{ client_detail.title }}</p>
-    <p><strong>{% trans "Contact phone" %}: </strong> {{ client_detail.contact_phone }}</p>
-    <p><strong>{% trans "E-mail" %}: </strong> {{ client_detail.contact_email }}</p>
-    <p><strong>{% trans "Address" %}: </strong> {{ client_detail.contact_address }}</p>
-    <br>
+  <h1 style="text-align: center">{% trans "Client details" %}</h1>
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Name" %}: </strong></td>
+        <td style="padding:10px">{{ client_detail.title }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Contact phone" %}: </strong></td>
+        <td style="padding:10px">{{ client_detail.contact_phone }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "E-mail" %}: </strong></td>
+        <td style="padding:10px">{{ client_detail.contact_email }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Address" %}: </strong></td>
+        <td style="padding:10px">{{ client_detail.contact_address }}</td>
+      </tr>
+    </table>
+  <br>
+  <br>
     <div>
       <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'client_update_view' client_detail.pk %}">
         {% trans "Edit" %}

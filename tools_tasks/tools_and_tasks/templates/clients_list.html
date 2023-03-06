@@ -7,24 +7,30 @@
 {% block content %}
 
   <h1  style="text-align:center">{% trans "Clients" %}</h1>
-  {% if clients_list %}
 
-        <table class="table table-bordered">
+   <br>
+  <form action="{% url 'search_clients' %}" method="get">
+    <input name="query" type="text" placeholder="{% blocktrans %}Clients search{% endblocktrans %}">
+  </form>
+   <br>
+
+  {% if clients_list %}
+        <table>
             <thead>
                 <tr>
-                    <th scope="col">{% trans "Name" %}</th>
-                    <th scope="col">{% trans "Contact phone" %}</th>
-                    <th scope="col">{% trans "E-mail" %}</th>
-                    <th scope="col">{% trans "Address" %}</th>
+                    <th style="padding:10px">{% trans "Name" %}</th>
+                    <th style="padding:10px">{% trans "Contact phone" %}</th>
+                    <th style="padding:10px">{% trans "E-mail" %}</th>
+                    <th style="padding:10px">{% trans "Address" %}</th>
                 </tr>
             </thead>
             <tbody>
                 {% for client in clients_list %}
                     <tr>
-                        <th scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.title }}</a></th>
-                        <td scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_phone }}</a></td>
-                        <td scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_email }}</a></td>
-                        <td scope="row"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_address }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.title }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_phone }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_email }}</a></td>
+                        <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_address }}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -32,12 +38,11 @@
   {% else %}
     <p>{% trans "No clients at the moment" %}.</p>
   {% endif %}
+
    <br>
-  <form action="{% url 'search_clients' %}" method="get">
-    <input name="query" type="text" placeholder="{% blocktrans %}Clients search{% endblocktrans %}">
-  </form>
    <br>
-  <div class="pagination">
+
+  <div class="pagination" style="text-align:center">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; {% trans "First" %}</a>
