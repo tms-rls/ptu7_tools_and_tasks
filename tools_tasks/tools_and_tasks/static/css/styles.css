@@ -1,15 +1,15 @@
 body {
   background-color: rgb(40, 50, 80);
-  color: white;
+  color: LightGray;
 }
 /* unvisited link */
 a:link {
-  color: white;
+  color: LightGray;
 }
 
 /* visited link */
 a:visited {
-  color: white;
+  color: LightGray;
 }
 
 /* mouse over link */

@@ -8,19 +8,46 @@
 
 {% block content %}
 
-  <h1>{% trans "Invoice details" %}:</h1>
-    <p><strong>{% trans "Date" %}: </strong>{{ bill_detail.date }}</p>
-    <p><strong>{% trans "Number" %}: </strong> {{ bill_detail.number }}</p>
-    <p><strong>{% trans "Issued to" %}: </strong> {{ bill_detail.client }}</p>
-    <p><strong>{% trans "Works done at" %}: </strong> {{ bill_detail.construction_object }}</p>
-    <p><strong>{% trans "Amount" %}: </strong> {{ bill_detail.amount }}</p>
-    <p><strong>{% trans "Payment day" %}: </strong> {{ bill_detail.payment_date }}</p>
-    <p><strong>{% trans "Status" %}: </strong> {{ bill_detail.get_status_display }}</p>
-    <br>
-    <div>
-      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'bill_update_view' bill_detail.pk %}">
-        {% trans "Edit" %}
-      </a>
-    </div>
+  <h1 style="text-align: center">{% trans "Invoice details" %}:</h1>
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Date" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.date }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Number" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.number }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Issued to" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.client }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Works done at" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.construction_object }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Amount, EUR" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.amount }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Payment day" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.payment_date }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Status" %}: </strong></td>
+        <td style="padding:10px">{{ bill_detail.get_status_display }}</td>
+      </tr>
+    </table>
+  <br>
+  <div>
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'bill_update_view' bill_detail.pk %}">
+      {% trans "Edit" %}
+    </a>
+  </div>
 
 {% endblock %}
