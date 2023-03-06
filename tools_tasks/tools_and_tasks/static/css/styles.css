@@ -1,5 +1,5 @@
 body {
-  background-color: Black;
+  background-color: rgb(40, 50, 80);
   color: white;
 }
 /* unvisited link */
@@ -14,10 +14,10 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  color: green;
+  color: Aqua;
 }
 
 /* selected link */
 a:active {
-  color: blue;
+  color: red;
 }
