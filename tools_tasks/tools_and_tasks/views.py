@@ -32,10 +32,18 @@ def search_objects(request):
     return render(request, 'search_objects.html', {'objects_list': search_results, 'query': query})
 
 
-def search_tasks(request):
+def search_managed_tasks(request):
     query = request.GET.get('query')
-    search_results = Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
-    return render(request, 'search_tasks.html', {'tasks_list': search_results, 'query': query})
+    search_results = Task.objects.filter(Q(manager=request.user) &
+                                         (Q(title__icontains=query) | Q(description__icontains=query)))
+    return render(request, 'search_managed_tasks.html', {'managed_tasks_list': search_results, 'query': query})
+
+
+def search_received_tasks(request):
+    query = request.GET.get('query')
+    search_results = Task.objects.filter(Q(employee=request.user) &
+                                         (Q(title__icontains=query) | Q(description__icontains=query)))
+    return render(request, 'search_received_tasks.html', {'received_tasks_list': search_results, 'query': query})
 
 
 def search_tools(request):

@@ -35,6 +35,7 @@ urlpatterns = [
     path('searchbills/', views.search_bills, name='search_bills'),
     path('searchclients/', views.search_clients, name='search_clients'),
     path('searchobjects/', views.search_objects, name='search_objects'),
-    path('searchtasks/', views.search_tasks, name='search_tasks'),
+    path('searchmanagedtasks/', views.search_managed_tasks, name='search_managed_tasks'),
+    path('searchreceivedtasks/', views.search_received_tasks, name='search_received_tasks'),
     path('searchtools/', views.search_tools, name='search_tools'),
 ]

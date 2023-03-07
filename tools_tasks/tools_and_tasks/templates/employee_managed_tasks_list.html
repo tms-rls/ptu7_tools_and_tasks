@@ -8,8 +8,8 @@
 
   <h1 style="text-align:center">{% trans "My managed tasks" %}</h1>
 
-    <form action="{% url 'search_tasks' %}" method="get">
-        <input name="query" type="text" placeholder="{% blocktrans %}Task search{% endblocktrans %}">
+    <form action="{% url 'search_managed_tasks' %}" method="get">
+        <input name="query" type="text" placeholder="{% blocktrans %}Search managed tasks{% endblocktrans %}">
     </form>
 
    <br>

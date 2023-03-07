@@ -2,21 +2,21 @@
 
 {% load i18n %}
 
-{% block title %}{% trans "Task search results" %}{% endblock %}
+{% block title %}{% trans "Received tasks search results" %}{% endblock %}
 
 {% block content %}
   <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
-  {% if tasks_list %}
+  {% if received_tasks_list %}
   <ul>
-    {% for task in tasks_list %}
+    {% for task in received_tasks_list %}
       <li>
         <a href="{% url 'task_detail_view' task.pk %}">{{ task.title }} {{task.date}}</a>
       </li>
     {% endfor %}
   </ul>
   {% else %}
-    <p>{% trans "No tasks for" %} "{{query}}" {% trans "query" %}</p>
+    <p>{% trans "No received tasks for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}
 
 {% endblock %}
