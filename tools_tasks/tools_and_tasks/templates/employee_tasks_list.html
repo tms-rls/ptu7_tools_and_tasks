@@ -5,12 +5,19 @@
 {% block title %}{% trans "My tasks" %}{% endblock %}
 
 {% block content %}
-  <h1>{% trans "My tasks" %}:</h1>
+
+  <h1 style="text-align:center">{% trans "My tasks" %}</h1>
+
+    <form action="{% url 'search_tasks' %}" method="get">
+        <input name="query" type="text" placeholder="{% blocktrans %}Task search{% endblocktrans %}">
+    </form>
+
+   <br>
 
   {% if employee_tasks_list %}
-      {% for task in employee_tasks_list %}
-        {% if task.employee == user %}
-            <p>{% trans "Assigned tasks" %}:</p>
+    {% if task.employee == user %}
+        <p>{% trans "Assigned tasks" %}:</p>
+        {% for task in employee_tasks_list %}
                 <ol>
                     <li>
                         <a style="{% if task.deadline_overdue %}color: red{% endif %}" href="{% url 'task_detail_view' task.pk %}">
@@ -18,9 +25,11 @@
                         </a>
                     </li>
                 </ol>
-        {% endif %}
-        {% if task.manager == user %}
-            <p>{% trans "Created tasks" %}:</p>
+      {% endfor %}
+    {% endif %}
+    {% if task.manager == user %}
+        <p>{% trans "Created tasks" %}:</p>
+        {% for task in employee_tasks_list %}
                 <ol>
                     <li>
                         <a style="{% if task.deadline_overdue %}color: red{% endif %}" href="{% url 'task_detail_view' task.pk %}">
@@ -28,17 +37,12 @@
                         </a>
                     </li>
                 </ol>
-        {% endif %}
-      {% endfor %}
+        {% endfor %}
+    {% endif %}
   {% else %}
     <p>{% trans "No tasks at the moment" %}.</p>
   {% endif %}
-   <br>
-   <div>
-      <form action="{% url 'search_tasks' %}" method="get">
-        <input name="query" type="text" placeholder="{% blocktrans %}Task search{% endblocktrans %}">
-      </form>
-   </div>
+
    <br>
   <div class="pagination">
     <span class="step-links">

@@ -176,14 +176,24 @@ class TaskDetailView(LoginRequiredMixin, FormMixin, generic.DetailView):
         return super(TaskDetailView, self).form_valid(form)
 
 
-class EmployeeTasksListView(LoginRequiredMixin, generic.ListView):
+class EmployeeManagedTasksListView(LoginRequiredMixin, generic.ListView):
     model = Task
-    template_name = 'employee_tasks_list.html'
-    context_object_name = 'employee_tasks_list'
+    template_name = 'employee_managed_tasks_list.html'
+    context_object_name = 'employee_managed_tasks'
     paginate_by = 10
 
     def get_queryset(self):
-        return Task.objects.filter(Q(manager=self.request.user) | Q(employee=self.request.user)).order_by('-date')
+        return Task.objects.filter(Q(manager=self.request.user)).order_by('-date')
+
+
+class EmployeeReceivedTasksListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    template_name = 'employee_received_tasks_list.html'
+    context_object_name = 'employee_received_tasks'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Task.objects.filter(Q(employee=self.request.user)).order_by('-date')
 
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
