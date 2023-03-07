@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "My tools search results" %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
+  <br>
+  {% if employee_tools_list %}
+    <table>
+      <thead>
+          <tr>
+              <th style="padding:10px">{% trans "Tool" %}</th>
+              <th style="padding:10px">{% trans "Inventory number" %}</th>
+              <th style="padding:10px">{% trans "Const. object" %}</th>
+          </tr>
+      </thead>
+      <tbody>
+    {% for tool in employee_tools_list %}
+      <tr>
+        <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a></td>
+        <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.inventory_number }}</a></td>
+        <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.construction_object }}</a></td>
+      </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>{% trans "No taken tools for" %} "{{query}}" {% trans "query" %}</p>
+  {% endif %}
+
+{% endblock %}

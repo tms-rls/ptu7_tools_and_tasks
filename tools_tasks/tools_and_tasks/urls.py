@@ -38,4 +38,5 @@ urlpatterns = [
     path('searchmanagedtasks/', views.search_managed_tasks, name='search_managed_tasks'),
     path('searchreceivedtasks/', views.search_received_tasks, name='search_received_tasks'),
     path('searchtools/', views.search_tools, name='search_tools'),
+    path('searchemployeetools/', views.search_employee_tools, name='search_employee_tools'),
 ]

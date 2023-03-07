@@ -52,6 +52,13 @@ def search_tools(request):
     return render(request, 'search_tools.html', {'tools_list': search_results, 'query': query})
 
 
+def search_employee_tools(request):
+    query = request.GET.get('query')
+    search_results = Tool.objects.filter(Q(employee=request.user) &
+                                         Q(title__icontains=query) | Q(inventory_number__icontains=query))
+    return render(request, 'search_employee_tools.html', {'employee_tools_list': search_results, 'query': query})
+
+
 class BillListView(LoginRequiredMixin, generic.ListView):
     model = Bill
     template_name = 'bills_list.html'

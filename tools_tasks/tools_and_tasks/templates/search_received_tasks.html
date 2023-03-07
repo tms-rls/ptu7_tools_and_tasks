@@ -8,13 +8,26 @@
   <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
   {% if received_tasks_list %}
-  <ul>
+    <table>
+      <thead>
+          <tr>
+              <th style="padding:10px">{% trans "Task" %}</th>
+              <th style="padding:10px">{% trans "Manager" %}</th>
+              <th style="padding:10px">{% trans "Deadline" %}</th>
+              <th style="padding:10px">{% trans "Status" %}</th>
+          </tr>
+      </thead>
+      <tbody>
     {% for task in received_tasks_list %}
-      <li>
-        <a href="{% url 'task_detail_view' task.pk %}">{{ task.title }} {{task.date}}</a>
-      </li>
+      <tr>
+        <td style="padding:10px"><a href="{% url 'task_detail_view' task.pk %}" style="{% if task.deadline_overdue %}color: red{% endif %}">{{ task.title }}</a></td>
+        <td style="padding:10px"><a href="{% url 'task_detail_view' task.pk %}" style="{% if task.deadline_overdue %}color: red{% endif %}">{{ task.manager }}</a></td>
+        <td style="padding:10px"><a href="{% url 'task_detail_view' task.pk %}" style="{% if task.deadline_overdue %}color: red{% endif %}">{{ task.deadline }}</a></td>
+        <td style="padding:10px"><a href="{% url 'task_detail_view' task.pk %}" style="{% if task.deadline_overdue %}color: red{% endif %}">{{ task.get_status_display }}</a></td>
+      </tr>
     {% endfor %}
-  </ul>
+      </tbody>
+    </table>
   {% else %}
     <p>{% trans "No received tasks for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}
