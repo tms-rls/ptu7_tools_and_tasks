@@ -2,21 +2,39 @@
 
 {% load i18n %}
 
-{% block title %}{% trans "Bill search results" %}{% endblock %}
+{% block title %}{% trans "Invoice search results" %}{% endblock %}
 
 {% block content %}
+
   <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
   {% if bills_list %}
-  <ul>
-    {% for bill in bills_list %}
-      <li>
-        <a href="{% url 'bill_detail_view' bill.pk %}">
-          {{ bill.date }} {{bill.number}} {{ bill.client }} {{ bill.construction_object }} {{ bill.amount }} {{ bill.payment_date }} {{ bill.get_status_display }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+    <table>
+        <thead>
+            <tr>
+                <th style="padding:10px">{% trans "Date" %}</th>
+                <th style="padding:10px">{% trans "Number" %}</th>
+                <th style="padding:10px">{% trans "Client" %}</th>
+                <th style="padding:10px">{% trans "Const. object" %}</th>
+                <th style="padding:10px">{% trans "Amount" %}</th>
+                <th style="padding:10px">{% trans "Status" %}</th>
+                <th style="padding:10px">{% trans "Payment date" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bill in bills_list %}
+                <tr>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.date }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.number }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.client }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.construction_object }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.amount }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.get_status_display }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.payment_date }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
   {% else %}
     <p>{% trans "No invoices for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}

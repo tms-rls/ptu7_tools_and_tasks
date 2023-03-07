@@ -5,18 +5,30 @@
 {% block title %}{% trans "Client search results" %}{% endblock %}
 
 {% block content %}
+
   <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
   {% if clients_list %}
-  <ul>
-    {% for client in clients_list %}
-      <li>
-        <a href="{% url 'client_detail_view' client.pk %}">
-          {{ client.title }} {{client.contact_phone}} {{ client.contact_email }} {{ client.contact_address }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+    <table>
+        <thead>
+            <tr>
+                <th style="padding:10px">{% trans "Name" %}</th>
+                <th style="padding:10px">{% trans "Contact phone" %}</th>
+                <th style="padding:10px">{% trans "E-mail" %}</th>
+                <th style="padding:10px">{% trans "Address" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients_list %}
+                <tr>
+                    <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.title }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_phone }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_email }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'client_detail_view' client.pk %}">{{ client.contact_address }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
   {% else %}
     <p>{% trans "No clients for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}
