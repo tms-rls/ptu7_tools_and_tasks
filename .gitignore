@@ -1,2 +1,3 @@
 /tools_tasks/tools_tasks/my_settings.py
 /tools_tasks/db.sqlite3
+*.idea
