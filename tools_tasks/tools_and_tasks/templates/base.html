@@ -15,7 +15,7 @@
           /* The navigation bar */
           .navbar {
             overflow: hidden;
-            background-color: SlateGray;
+            background-color: rgb(51, 0, 51);
             position: fixed;
             left: 0;
             top: 0;
@@ -26,22 +26,17 @@
           .navbar a {
             float: left;
             display: block;
-            color: LightGray;
+            background-color: rgb(102, 51, 102);
+            color: rgb(204, 204, 204);
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
           }
 
-          /* Add a grey background color on mouse-over */
-          .navbar a:hover {
-            background-color: LightGrey;
-            color: black;
-          }
-
           .navbar a.split {
             float: right;
-            background-color: Red;
-            color: LightGray;
+            background-color: rgb(102, 51, 102);
+            color: rgb(204, 204, 204);
           }
 
           body{
@@ -54,8 +49,8 @@
              left: 0;
              bottom: 0;
              width: 100%;
-             background-color: SlateGray;
-             color: LightGray;
+             background-color: rgb(51, 0, 51);
+             color: rgb(204, 204, 204);
              text-align: center;
           }
 
@@ -93,7 +88,7 @@
         <div class="navbar">
           {% if user.is_authenticated %}
 
-            <a href="{% url 'start' %}" class="active">{% trans "Menu" %}</a>
+            <a href="{% url 'start' %}">{% trans "Menu" %}</a>
             <a class="split" href="{% url 'logout' %}">{% trans "Log out" %}</a>
             <a class="split">{% trans "Logged as" %}: {{ user.get_username }}</a>
 

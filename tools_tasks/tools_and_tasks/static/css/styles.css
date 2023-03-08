@@ -1,23 +1,23 @@
 body {
-  background-color: rgb(40, 50, 80);
+  background-color: rgb(0, 0, 51);
   color: LightGray;
 }
 /* unvisited link */
 a:link {
-  color: LightGray;
+  color: rgb(204, 204, 204);
 }
 
 /* visited link */
 a:visited {
-  color: LightGray;
+  color: rgb(204, 204, 204);
 }
 
 /* mouse over link */
 a:hover {
-  color: Aqua;
+  color: rgb(204, 0, 204);
 }
 
 /* selected link */
 a:active {
-  color: red;
+  color: rgb(204, 0, 204);
 }
