@@ -9,10 +9,11 @@
 {% block content %}
 
   <h1 style="text-align:center">{{ tool_detail.title }}</h1>
+
       {% if tool_detail.picture %}
-        <img src="{{ tool_detail.picture.url}}" class="card-img-top" alt="...">
+        <img src="{{ tool_detail.picture.url}}" style="height: 40%; width: 40%; object-fit: cover" alt="...">
       {% else %}
-        <img src="{% static 'images/no-image.png' %}" style="width:300px;height:400px;">
+        <img src="{% static 'images/no-image.png' %}" style="height: 20%; width: 20%; object-fit: cover">
       {% endif %}
 
   <br>
