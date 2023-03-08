@@ -5,54 +5,47 @@
       <title>{% block title %}{% endblock %}</title>
       {% load static %}
       <link rel="stylesheet" href="{% static '/css/styles.css' %}">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+
           body {
             font-family: Arial, Helvetica;
           }
-          /* Style the navigation menu */
-          .topnav {
-            overflow: hidden;
-            background-color: rgb(40, 50, 80);
-            position: relative;
-          }
 
-          /* Hide the links inside the navigation menu (except for logo/home) */
-          .topnav #myLinks {
-            display: none;
+          /* The navigation bar */
+          .navbar {
+            overflow: hidden;
+            background-color: SlateGray;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
           }
 
           /* Style navigation menu links */
-          .topnav a {
-            color: white;
+          .navbar a {
+            float: left;
+            display: block;
+            color: LightGray;
+            text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 17px;
-            display: block;
-          }
-
-          /* Style the hamburger menu */
-          .topnav a.icon {
-            background: rgb(180, 30, 30);
-            display: block;
-            position: absolute;
-            right: 0;
-            top: 0;
           }
 
           /* Add a grey background color on mouse-over */
-          .topnav a:hover {
+          .navbar a:hover {
             background-color: LightGrey;
             color: black;
           }
 
-          .active {
-            background-color: SlateGray;
-            color: white;
+          .navbar a.split {
+            float: right;
+            background-color: Red;
+            color: LightGray;
           }
 
           body{
+            margin-top: 60px;
             margin-bottom: 100px;
           }
 
@@ -62,36 +55,44 @@
              bottom: 0;
              width: 100%;
              background-color: SlateGray;
-             color: white;
+             color: LightGray;
              text-align: center;
           }
+
+          form {
+              width: 100%;
+            }
+          label {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              text-align: left;
+              width: 400px;
+              line-height: 26px;
+              margin-top: 10px;
+              margin-bottom: 10px;
+            }
+          input {
+              display: inline-block;
+          }
+
         </style>
     </head>
+
     <body>
+
       {% load i18n %}
-        <div class="topnav">
+
+        <div class="navbar">
+
           {% if user.is_authenticated %}
-            <a href="{% url 'start' %}" class="active">{% trans "Start" %}</a>
-            <div id="myLinks">
-              <a href="{% url 'tools_list_view' %}">{% trans "Tools" %}</a>
-              <a href="{% url 'tool_create_view' %}">{% trans "Add tool" %}</a>
-              <a href="{% url 'employee_tools_list' %}">{% trans "My tools" %}</a>
-              <a href="{% url 'task_create_view' %}">{% trans "Add task" %}</a>
-              <a href="{% url 'employee_managed_tasks_list' %}">{% trans "My managed tasks" %}</a>
-              <a href="{% url 'employee_received_tasks_list' %}">{% trans "My received tasks" %}</a>
-              <a href="{% url 'construction_objects_list_view' %}">{% trans "Construction objects" %}</a>
-              <a href="{% url 'construction_object_create_view' %}">{% trans "Add construction object" %}</a>
-              <a href="{% url 'bills_list_view' %}">{% trans "Invoices" %}</a>
-              <a href="{% url 'bill_create_view' %}">{% trans "Add invoice" %}</a>
-              <a href="{% url 'clients_list_view' %}">{% trans "Clients" %}</a>
-              <a href="{% url 'client_create_view' %}">{% trans "Add client" %}</a>
-              <a>{% trans "Logged as" %}: {{ user.get_username }}</a>
-              <a href="{% url 'logout' %}">{% trans "Log out" %}</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+
+            <a href="{% url 'start' %}" class="active">{% trans "Menu" %}</a>
+            <a class="split" href="{% url 'logout' %}">{% trans "Log out" %}</a>
+            <a class="split">{% trans "Logged as" %}: {{ user.get_username }}</a>
+
           {% endif %}
+
         <form action="{% url 'set_language' %}" method="post">
           {% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}"/>
@@ -107,17 +108,6 @@
               </select>
         </form>
       </div>
-
-      <script>
-      function myFunction() {
-        var x = document.getElementById("myLinks");
-        if (x.style.display === "block") {
-          x.style.display = "none";
-        } else {
-          x.style.display = "block";
-        }
-      }
-      </script>
 
       <div class="container">
         {% block content %}{% endblock %}
