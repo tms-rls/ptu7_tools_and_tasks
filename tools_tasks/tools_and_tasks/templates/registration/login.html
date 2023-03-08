@@ -6,6 +6,8 @@
 
 {% block content %}
 
+  <br>
+
   {% if form.errors %}
     <p>{% trans "Login error. Please try again" %}!</p>
   {% endif %}
@@ -20,14 +22,17 @@
     {% csrf_token %}
     <table>
       <tr>
-        <td>{% trans "User" %}: </td>
-        <td>{{ form.username }}</td>
+        <td style="padding:10px">{% trans "User" %}:</td>
+        <td style="padding:10px">{{ form.username }}</td>
       </tr>
       <tr>
-        <td>{% trans "Password" %}: </td>
-        <td>{{ form.password }}</td>
+        <td style="padding:10px">{% trans "Password" %}: </td>
+        <td style="padding:10px">{{ form.password }}</td>
       </tr>
     </table>
+
+    <br>
+
     <input type="submit" value="{% blocktrans %}Log in{% endblocktrans %}" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>

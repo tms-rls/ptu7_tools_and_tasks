@@ -5,6 +5,10 @@
 {% block title %}{% trans "Logged out" %}{% endblock %}
 
 {% block content %}
+
+  <br>
   <p>{% trans "Logged out successfully" %}!</p>
+  <br>
   <a href="{% url 'login'%}">{% trans "Log in again" %}.</a>
+
 {% endblock %}
