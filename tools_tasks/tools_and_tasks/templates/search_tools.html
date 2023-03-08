@@ -5,18 +5,30 @@
 {% block title %}{% trans "Tool search results" %}{% endblock %}
 
 {% block content %}
+
   <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
   {% if tools_list %}
-  <ul>
-    {% for tool in tools_list %}
-      <li>
-        <a href="{% url 'tool_detail_view' tool.pk %}">
-          {{ tool.title }} {{tool.inventory_number}} {{ tool.get_status_display }} {{ tool.employee }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+    <table>
+        <thead>
+            <tr>
+              <th style="padding:10px">{% trans "Tool" %}</th>
+              <th style="padding:10px">{% trans "Inventory number" %}</th>
+              <th style="padding:10px">{% trans "Availability" %}</th>
+              <th style="padding:10px">{% trans "Taken by" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for tool in tools_list %}
+            <tr>
+              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a></td>
+              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.inventory_number }}</a></td>
+              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.get_status_display }}</a></td>
+              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.employee }}</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
   {% else %}
     <p>{% trans "No tools for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}

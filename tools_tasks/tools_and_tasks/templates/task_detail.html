@@ -8,15 +8,40 @@
 
 {% block content %}
 
-  <h1>{{ task_detail.title }}</h1>
+  <h1 style="text-align:center">{{ task_detail.title }}</h1>
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Task manager" %}: </strong></td>
+        <td style="padding:10px">{{ task_detail.manager }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Task date" %}: </strong></td>
+        <td style="padding:10px">{{ task_detail.date }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Task details" %}: </strong></td>
+        <td style="padding:10px">{{ task_detail.description | safe }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Assigned to" %}: </strong></td>
+        <td style="padding:10px">{{ task_detail.employee }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Deadline" %}: </strong></td>
+        <td style="padding:10px">{{ task_detail.deadline }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Status" %}: </strong></td>
+        <td style="padding:10px">{{ task_detail.get_status_display }}</td>
+      </tr>
+    </table>
 
-    <p><strong>{% trans "Task manager" %}: </strong>{{ task_detail.manager }}</p>
-    <p><strong>{% trans "Task date" %}: </strong>{{ task_detail.date }}</p>
-    <p><strong>{% trans "Task details" %}: </strong> {{ task_detail.description | safe }}</p>
-    <p><strong>{% trans "Assigned to" %}: </strong> {{ task_detail.employee }}</p>
-    <p><strong>{% trans "Deadline" %}: </strong> {{ task_detail.deadline }}</p>
-    <p><strong>{% trans "Status" %}: </strong> {{ task_detail.get_status_display }}</p>
     <br>
+
     {% if task_detail.manager == user %}
         <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task_manager_update_view' task_detail.pk %}">{% trans "Edit task" %}</a>
@@ -27,9 +52,12 @@
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task_update_view' task_detail.pk %}">{% trans "Edit task" %}</a>
         </div>
     {% endif %}
-    <br>
+
+  <br>
   <hr>
+
   <h2>{% trans "Comments" %}:</h2>
+
   {% if task_detail.task_comments.all %}
     {% for comment in task_detail.task_comments.all %}
       <hr>

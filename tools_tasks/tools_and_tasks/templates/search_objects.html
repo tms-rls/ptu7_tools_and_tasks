@@ -5,18 +5,28 @@
 {% block title %}{% trans "Construction object search results" %}{% endblock %}
 
 {% block content %}
+
   <h1>{% trans "Search" %} "{{query}}" {% trans "results" %}:</h1>
   <br>
   {% if objects_list %}
-  <ul>
-    {% for object in objects_list %}
-      <li>
-        <a href="{% url 'construction_object_detail_view' object.pk %}">
-          {{ object.address  }} {{object.client}} {{ object.manager }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+    <table>
+        <thead>
+            <tr>
+              <th style="padding:10px">{% trans "Address" %}</th>
+              <th style="padding:10px">{% trans "Client" %}</th>
+              <th style="padding:10px">{% trans "Manager" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for object in objects_list %}
+            <tr>
+              <td style="padding:10px"><a href="{% url 'construction_object_detail_view' object.pk %}">{{ object.address }}</a></td>
+              <td style="padding:10px"><a href="{% url 'construction_object_detail_view' object.pk %}">{{ object.client }}</a></td>
+              <td style="padding:10px"><a href="{% url 'construction_object_detail_view' object.pk %}">{{ object.manager }}</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
   {% else %}
     <p>{% trans "No construction objects for" %} "{{query}}" {% trans "query" %}</p>
   {% endif %}

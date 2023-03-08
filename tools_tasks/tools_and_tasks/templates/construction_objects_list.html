@@ -25,11 +25,11 @@
         </thead>
         <tbody>
             {% for construction_object in construction_objects_list %}
-                <tr>
-                    <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.address }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.client }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.manager }}</a></td>
-                </tr>
+            <tr>
+                <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.address }}</a></td>
+                <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.client }}</a></td>
+                <td style="padding:10px"><a href="{% url 'construction_object_detail_view' construction_object.pk %}">{{ construction_object.manager }}</a></td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>

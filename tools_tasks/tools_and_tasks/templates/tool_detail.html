@@ -8,26 +8,51 @@
 
 {% block content %}
 
-  <h1>{{ tool_detail.title }}</h1>
+  <h1 style="text-align:center">{{ tool_detail.title }}</h1>
       {% if tool_detail.picture %}
         <img src="{{ tool_detail.picture.url}}" class="card-img-top" alt="...">
       {% else %}
         <img src="{% static 'images/no-image.png' %}" style="width:300px;height:400px;">
       {% endif %}
+
   <br>
-  <p><strong>{% trans "Tool inventory number" %}: </strong>{{ tool_detail.inventory_number }}</p>
-  <p><strong>{% trans "Status" %}: </strong> {{ tool_detail.get_status_display }}</p>
-  <p><strong>{% trans "In possession" %}: </strong> {{ tool_detail.employee }}</p>
-  <p><strong>{% trans "Construction object" %}: </strong> {{ tool_detail.construction_object }}</p>
+
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Tool inventory number" %}: </strong></td>
+        <td style="padding:10px">{{ tool_detail.inventory_number }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Status" %}: </strong></td>
+        <td style="padding:10px">{{ tool_detail.get_status_display }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "In possession" %}: </strong></td>
+        <td style="padding:10px">{{ tool_detail.employee }}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px"><strong>{% trans "Construction object" %}: </strong></td>
+        <td style="padding:10px">{{ tool_detail.construction_object }}</td>
+      </tr>
+    </table>
+
   <br>
+
   {% if user.is_authenticated %}
       <div>
         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'tool_update_view' tool_detail.pk %}">{% trans "Edit tool" %}</a>
       </div>
   {% endif %}
+
   <br>
   <hr>
+
   <h2>{% trans "Comments" %}:</h2>
+
   {% if tool_detail.tool_comments.all %}
     {% for comment in tool_detail.tool_comments.all %}
       <hr>

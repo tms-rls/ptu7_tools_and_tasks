@@ -6,38 +6,42 @@
 
 {% block content %}
 
-  <h1  style="text-align:center">{% trans "Tool list" %}</h1>
-  {% if tools_list %}
+  <h1 style="text-align:center">{% trans "Tool list" %}</h1>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">{% trans "Tool" %}</th>
-                    <th scope="col">{% trans "Inventory number" %}</th>
-                    <th scope="col">{% trans "Availability" %}</th>
-                    <th scope="col">{% trans "Taken by" %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for tool in tools_list %}
-                    <tr>
-                        <th scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a></th>
-                        <td scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.inventory_number }}</a></td>
-                        <td scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.get_status_display }}</a></td>
-                        <td scope="row"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.employee }}</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-  {% else %}
-    <p>{% trans "No tools at the moment" %}.</p>
-  {% endif %}
-   <br>
   <form action="{% url 'search_tools' %}" method="get">
     <input name="query" type="text" placeholder="{% blocktrans %}Tool search{% endblocktrans %}">
   </form>
+
+  <br>
+
+  {% if tools_list %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="padding:10px">{% trans "Tool" %}</th>
+                <th style="padding:10px">{% trans "Inventory number" %}</th>
+                <th style="padding:10px">{% trans "Availability" %}</th>
+                <th style="padding:10px">{% trans "Taken by" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tool in tools_list %}
+                <tr>
+                    <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.inventory_number }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.get_status_display }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.employee }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  {% else %}
+    <p>{% trans "No tools at the moment" %}.</p>
+  {% endif %}
+
    <br>
-  <div class="pagination">
+
+  <div class="pagination" style="text-align:center">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; {% trans "First" %}</a>
