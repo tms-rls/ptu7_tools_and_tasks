@@ -45,7 +45,7 @@
           }
 
           body{
-            margin-top: 60px;
+            margin-top: 80px;
             margin-bottom: 100px;
           }
 
@@ -76,6 +76,13 @@
               display: inline-block;
           }
 
+          .language-bar {
+            position: absolute;
+            top: 45px;
+            right: 0px;
+            padding: 10px;
+          }
+
         </style>
     </head>
 
@@ -84,7 +91,6 @@
       {% load i18n %}
 
         <div class="navbar">
-
           {% if user.is_authenticated %}
 
             <a href="{% url 'start' %}" class="active">{% trans "Menu" %}</a>
@@ -92,7 +98,9 @@
             <a class="split">{% trans "Logged as" %}: {{ user.get_username }}</a>
 
           {% endif %}
+      </div>
 
+      <div class="language-bar">
         <form action="{% url 'set_language' %}" method="post">
           {% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}"/>
