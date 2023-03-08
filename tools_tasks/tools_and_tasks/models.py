@@ -96,7 +96,7 @@ class Task(models.Model):
             return False
 
     def __str__(self):
-        return f'{self.title} {self.deadline}'
+        return f'{self.title}'
 
     def display_task_comments(self):
         return ' | '.join(comment.text for comment in self.task_comments.all())
