@@ -1,0 +1,738 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-08 14:20+0200\n"
+"PO-Revision-Date: 2023-03-08 15:02+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: .\models.py:13 .\models.py:63 .\models.py:75 .\models.py:111 .\models.py:149
+#: .\templates\bill_detail.html:18 .\templates\bills_list.html:20
+#: .\templates\search_bills.html:15
+msgid "Date"
+msgstr "Data"
+
+#: .\models.py:14
+msgid "Number of bill"
+msgstr "Sąskaitos - faktūros numeris"
+
+#: .\models.py:15 .\models.py:47 .\templates\bills_list.html:22
+#: .\templates\client_detail.html:5
+#: .\templates\construction_object_detail.html:22
+#: .\templates\construction_objects_list.html:22
+#: .\templates\search_bills.html:17 .\templates\search_objects.html:16
+msgid "Client"
+msgstr "Užsakovas"
+
+#: .\models.py:16 .\models.py:59 .\models.py:125
+#: .\templates\construction_object_detail.html:5
+#: .\templates\tool_detail.html:38
+msgid "Construction object"
+msgstr "Statybų objektas"
+
+#: .\models.py:18 .\templates\bills_list.html:24
+#: .\templates\search_bills.html:19
+msgid "Amount"
+msgstr "Suma"
+
+#: .\models.py:19
+msgid "Payment by date"
+msgstr "Apmokėjimo data"
+
+#: .\models.py:21
+msgid "Paid"
+msgstr "Apmokėta"
+
+#: .\models.py:22
+msgid "Unpaid"
+msgstr "Neapmokėta"
+
+#: .\models.py:23 .\models.py:85
+msgid "Canceled"
+msgstr "Atšaukta"
+
+#: .\models.py:25 .\models.py:87 .\models.py:133
+#: .\templates\bill_detail.html:42 .\templates\bills_list.html:25
+#: .\templates\employee_managed_tasks_list.html:23
+#: .\templates\employee_received_tasks_list.html:24
+#: .\templates\search_bills.html:20 .\templates\search_managed_tasks.html:16
+#: .\templates\search_received_tasks.html:17 .\templates\task_detail.html:38
+#: .\templates\tool_detail.html:30
+msgid "Status"
+msgstr "Būsena"
+
+#: .\models.py:35
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: .\models.py:36 .\templates\client_detail.html:22
+#: .\templates\clients_list.html:22 .\templates\search_clients.html:16
+msgid "Contact phone"
+msgstr "Kontaktinis tel. numeris"
+
+#: .\models.py:37
+msgid "Contact email"
+msgstr "Kontaktinis el. paštas"
+
+#: .\models.py:38
+msgid "Contact address"
+msgstr "Adresas korespondencijai"
+
+#: .\models.py:45 .\templates\client_detail.html:30
+#: .\templates\clients_list.html:24
+#: .\templates\construction_object_detail.html:18
+#: .\templates\construction_objects_list.html:21
+#: .\templates\search_clients.html:18 .\templates\search_objects.html:15
+msgid "Address"
+msgstr "Adresas"
+
+#: .\models.py:46 .\models.py:74 .\templates\construction_object_detail.html:26
+#: .\templates\construction_objects_list.html:23
+#: .\templates\employee_received_tasks_list.html:22
+#: .\templates\search_objects.html:17 .\templates\search_received_tasks.html:15
+msgid "Manager"
+msgstr "Vadovas"
+
+#: .\models.py:55 .\models.py:104 .\models.py:142
+#: .\templates\construction_object_detail.html:42
+#: .\templates\task_detail.html:59 .\templates\tool_detail.html:54
+msgid "Comments"
+msgstr "Komentarai"
+
+#: .\models.py:62 .\models.py:79 .\models.py:110 .\models.py:124
+#: .\models.py:148
+msgid "Employee"
+msgstr "Darbuotojas"
+
+#: .\models.py:64 .\models.py:112 .\models.py:150
+msgid "Comment"
+msgstr "Komentaras"
+
+#: .\models.py:76 .\models.py:108
+#: .\templates\employee_managed_tasks_list.html:21
+#: .\templates\employee_received_tasks_list.html:21
+#: .\templates\search_managed_tasks.html:14
+#: .\templates\search_received_tasks.html:14 .\templates\task_detail.html:5
+msgid "Task"
+msgstr "Užduotis"
+
+#: .\models.py:77
+msgid "Description"
+msgstr "Aprašymas"
+
+#: .\models.py:78
+msgid "Accomplish till"
+msgstr "Atlikti iki"
+
+#: .\models.py:82
+msgid "Assigned"
+msgstr "Paskirta"
+
+#: .\models.py:83
+msgid "In progress"
+msgstr "Vykdoma"
+
+#: .\models.py:84
+msgid "Finished"
+msgstr "Pabaigta"
+
+#: .\models.py:122 .\models.py:146 .\templates\employee_tools_list.html:21
+#: .\templates\search_employee_tools.html:14 .\templates\search_tools.html:15
+#: .\templates\tool_detail.html:5 .\templates\tools_list.html:21
+msgid "Tool"
+msgstr "Įrankis"
+
+#: .\models.py:123 .\templates\employee_tools_list.html:22
+#: .\templates\search_employee_tools.html:15 .\templates\search_tools.html:16
+#: .\templates\tools_list.html:22
+msgid "Inventory number"
+msgstr "Inventorinis numeris"
+
+#: .\models.py:128
+msgid "Available"
+msgstr "Galima paimti"
+
+#: .\models.py:129
+msgid "Broken"
+msgstr "Sugedęs"
+
+#: .\models.py:130
+msgid "In repair"
+msgstr "Taisomas"
+
+#: .\models.py:131
+msgid "Taken"
+msgstr "Paimta"
+
+#: .\models.py:134
+msgid "Picture"
+msgstr "Paveikslėlis"
+
+#: .\templates\base.html:91
+msgid "Menu"
+msgstr "Meniu"
+
+#: .\templates\base.html:92
+msgid "Log out"
+msgstr "Atsijungti"
+
+#: .\templates\base.html:93
+msgid "Logged as"
+msgstr "Prisijungęs kaip"
+
+#: .\templates\bill_detail.html:5
+msgid "Invoice"
+msgstr "Sąskaita - faktūra"
+
+#: .\templates\bill_detail.html:11
+msgid "Invoice details"
+msgstr "Sąskaitos - faktūros duomenys"
+
+#: .\templates\bill_detail.html:22 .\templates\bills_list.html:21
+#: .\templates\search_bills.html:16
+msgid "Number"
+msgstr "Numeris"
+
+#: .\templates\bill_detail.html:26
+msgid "Issued to"
+msgstr "Išrašyta užsakovui"
+
+#: .\templates\bill_detail.html:30
+msgid "Works done at"
+msgstr "Darbai atlikti statybų objekte"
+
+#: .\templates\bill_detail.html:34
+msgid "Amount, EUR"
+msgstr "Suma, Eur"
+
+#: .\templates\bill_detail.html:38
+msgid "Payment day"
+msgstr "Apmokėjimo data"
+
+#: .\templates\bill_detail.html:50 .\templates\client_detail.html:38
+#: .\templates\construction_object_detail.html:35
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: .\templates\bills_list.html:5
+msgid "Bills"
+msgstr "Sąskaitos - faktūros"
+
+#: .\templates\bills_list.html:9 .\templates\start.html:19
+msgid "Invoices"
+msgstr "Sąskaitos - faktūros"
+
+#: .\templates\bills_list.html:12
+msgid "Invoice search"
+msgstr "Ieškoti sąskaitų - faktūrų"
+
+#: .\templates\bills_list.html:23 .\templates\employee_tools_list.html:23
+#: .\templates\search_bills.html:18 .\templates\search_employee_tools.html:16
+msgid "Const. object"
+msgstr "Stat. objektas"
+
+#: .\templates\bills_list.html:26 .\templates\search_bills.html:21
+msgid "Payment date"
+msgstr "Apmokėjimo data"
+
+#: .\templates\bills_list.html:44
+msgid "No bills at the moment"
+msgstr "Nėra sąskaitų - faktūrų"
+
+#: .\templates\bills_list.html:53 .\templates\clients_list.html:48
+#: .\templates\construction_objects_list.html:45
+#: .\templates\employee_managed_tasks_list.html:44
+#: .\templates\employee_received_tasks_list.html:46
+#: .\templates\employee_tools_list.html:43 .\templates\tools_list.html:47
+msgid "First"
+msgstr "Pirmas"
+
+#: .\templates\bills_list.html:54 .\templates\clients_list.html:49
+#: .\templates\construction_objects_list.html:46
+#: .\templates\employee_managed_tasks_list.html:45
+#: .\templates\employee_received_tasks_list.html:47
+#: .\templates\employee_tools_list.html:44 .\templates\tools_list.html:48
+msgid "back"
+msgstr "atgal"
+
+#: .\templates\bills_list.html:58 .\templates\clients_list.html:53
+#: .\templates\construction_objects_list.html:50
+#: .\templates\employee_managed_tasks_list.html:49
+#: .\templates\employee_received_tasks_list.html:51
+#: .\templates\employee_tools_list.html:48 .\templates\tools_list.html:52
+msgid "from"
+msgstr "iš"
+
+#: .\templates\bills_list.html:62 .\templates\clients_list.html:57
+#: .\templates\construction_objects_list.html:54
+#: .\templates\employee_managed_tasks_list.html:53
+#: .\templates\employee_received_tasks_list.html:55
+#: .\templates\employee_tools_list.html:52 .\templates\tools_list.html:56
+msgid "forward"
+msgstr "pirmyn"
+
+#: .\templates\bills_list.html:63 .\templates\clients_list.html:58
+#: .\templates\construction_objects_list.html:55
+#: .\templates\employee_managed_tasks_list.html:54
+#: .\templates\employee_received_tasks_list.html:56
+#: .\templates\employee_tools_list.html:53 .\templates\tools_list.html:57
+msgid "Last"
+msgstr "Paskutinis"
+
+#: .\templates\client_detail.html:11
+msgid "Client details"
+msgstr "Užsakovo duomenys"
+
+#: .\templates\client_detail.html:18 .\templates\clients_list.html:21
+#: .\templates\search_clients.html:15
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: .\templates\client_detail.html:26 .\templates\clients_list.html:23
+#: .\templates\search_clients.html:17
+msgid "E-mail"
+msgstr "Elektroninis paštas"
+
+#: .\templates\clients_list.html:5 .\templates\clients_list.html:9
+#: .\templates\start.html:21
+msgid "Clients"
+msgstr "Užsakovai"
+
+#: .\templates\clients_list.html:12
+msgid "Clients search"
+msgstr "Ieškoti užsakovų"
+
+#: .\templates\clients_list.html:39
+msgid "No clients at the moment"
+msgstr "Nėra įvestų užsakovų"
+
+#: .\templates\construction_object_detail.html:11
+msgid "Construction object details"
+msgstr "Statybų objekto duomenys"
+
+#: .\templates\construction_object_detail.html:51
+#: .\templates\task_detail.html:68 .\templates\tool_detail.html:63
+msgid "No comments yet"
+msgstr "Nėra komentarų"
+
+#: .\templates\construction_object_detail.html:57
+#: .\templates\task_detail.html:74 .\templates\tool_detail.html:69
+msgid "Post comment"
+msgstr "Rašyti komentarą"
+
+#: .\templates\construction_object_detail.html:62
+#: .\templates\task_detail.html:79 .\templates\tool_detail.html:74
+msgid "Post"
+msgstr "Paskelbti"
+
+#: .\templates\construction_objects_list.html:5
+#: .\templates\construction_objects_list.html:9 .\templates\start.html:17
+msgid "Construction objects"
+msgstr "Statybų objektai"
+
+#: .\templates\construction_objects_list.html:12
+msgid "Construction object search"
+msgstr "Ieškoti statybų objektų"
+
+#: .\templates\construction_objects_list.html:37
+msgid "No construction objects at the moment"
+msgstr "Nėra įvestų statybų objektų"
+
+#: .\templates\employee_managed_tasks_list.html:5
+#: .\templates\employee_managed_tasks_list.html:9 .\templates\start.html:15
+msgid "My managed tasks"
+msgstr "Paskirtos užduotys"
+
+#: .\templates\employee_managed_tasks_list.html:12
+msgid "Search managed tasks"
+msgstr "Ieškoti paskirtų užduočių"
+
+#: .\templates\employee_managed_tasks_list.html:22
+#: .\templates\employee_received_tasks_list.html:23
+#: .\templates\search_managed_tasks.html:15
+#: .\templates\search_received_tasks.html:16 .\templates\task_detail.html:34
+msgid "Deadline"
+msgstr "Atlikti iki"
+
+#: .\templates\employee_managed_tasks_list.html:37
+msgid "No managed tasks at the moment"
+msgstr "Nėra paskirtų užduočių"
+
+#: .\templates\employee_received_tasks_list.html:5
+#: .\templates\employee_received_tasks_list.html:9 .\templates\start.html:16
+msgid "My received tasks"
+msgstr "Gautos užduotys"
+
+#: .\templates\employee_received_tasks_list.html:12
+msgid "Search received tasks"
+msgstr "Ieškoti gautų užduočių"
+
+#: .\templates\employee_received_tasks_list.html:39
+msgid "No received tasks at the moment"
+msgstr "Nėra gautų užduočių"
+
+#: .\templates\employee_tools_list.html:5 .\templates\start.html:13
+msgid "My tools"
+msgstr "Mano įrankiai"
+
+#: .\templates\employee_tools_list.html:9
+msgid "My taken tools"
+msgstr "Mano paimti įrankiai"
+
+#: .\templates\employee_tools_list.html:12
+msgid "Search my tools"
+msgstr "Ieškoti mano įrankių"
+
+#: .\templates\employee_tools_list.html:37
+msgid "No taken tools"
+msgstr "Nėra paimtų įrankių"
+
+#: .\templates\new_bill.html:5 .\templates\new_bill.html:15
+msgid "New invoice / Update invoice"
+msgstr "Nauja sąskaita - faktūra / Redaguoti sąskaitą - faktūrą"
+
+#: .\templates\new_bill.html:20 .\templates\new_client.html:20
+#: .\templates\new_construction_object.html:20 .\templates\new_task.html:20
+#: .\templates\new_tool.html:20
+msgid "Submit"
+msgstr "Pateikti"
+
+#: .\templates\new_client.html:5 .\templates\new_client.html:15
+msgid "New client / Update client"
+msgstr "Naujas užsakovas / Redaguoti užsakovą"
+
+#: .\templates\new_construction_object.html:5
+#: .\templates\new_construction_object.html:15
+msgid "New construction object / Update construction object"
+msgstr "Naujas statybų objektas / Redaguoti statybų objektą"
+
+#: .\templates\new_task.html:5 .\templates\new_task.html:15
+msgid "New task / Update task"
+msgstr "Nauja užduotis / Redaguoti užduotį"
+
+#: .\templates\new_tool.html:5 .\templates\new_tool.html:15
+msgid "New tool / Update tool"
+msgstr "Naujas įrankis / Redaguoti įrankį"
+
+#: .\templates\registration\logged_out.html:5
+msgid "Logged out"
+msgstr "Atsijungti"
+
+#: .\templates\registration\logged_out.html:10
+msgid "Logged out successfully"
+msgstr "Sėkmingai atsijungėte"
+
+#: .\templates\registration\logged_out.html:12
+msgid "Log in again"
+msgstr "Prisijungti iš naujo"
+
+#: .\templates\registration\login.html:5 .\templates\registration\login.html:36
+#: .\templates\registration\password_reset_complete.html:12
+msgid "Log in"
+msgstr "Prisijungti"
+
+#: .\templates\registration\login.html:12
+msgid "Login error. Please try again"
+msgstr "Prisijungimo klaida. Bandykite dar kartą"
+
+#: .\templates\registration\login.html:17
+msgid "No access. Please log in"
+msgstr "Neturite priėjimo. Prašome prisijungti"
+
+#: .\templates\registration\login.html:25
+msgid "User"
+msgstr "Vartotojas"
+
+#: .\templates\registration\login.html:29
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: .\templates\registration\login.html:40
+msgid "Forgot password"
+msgstr "Pamiršote slaptažodį"
+
+#: .\templates\registration\password_reset_complete.html:5
+msgid "Password reset complete"
+msgstr "Slaptažodžio keitimas baigtas"
+
+#: .\templates\registration\password_reset_complete.html:11
+msgid "Password has been changed"
+msgstr "Slaptažodis pakeistas"
+
+#: .\templates\registration\password_reset_confirm.html:5
+msgid "Password reset confirm"
+msgstr "Slaptažodžio keitimo patvirtinimas"
+
+#: .\templates\registration\password_reset_confirm.html:11
+msgid "Insert new password and repeat it"
+msgstr "Įveskite naują slaptažodį ir pakartokite dar kartą"
+
+#: .\templates\registration\password_reset_confirm.html:17
+msgid "New password"
+msgstr "Naujas slaptažodis"
+
+#: .\templates\registration\password_reset_confirm.html:22
+msgid "Repeat password"
+msgstr "Pakartokite slaptažodį"
+
+#: .\templates\registration\password_reset_confirm.html:27
+msgid "Change password"
+msgstr "Pakeisti slaptažodį"
+
+#: .\templates\registration\password_reset_confirm.html:32
+msgid "Could not change password"
+msgstr "Slaptažodžio pakeisti nepavyko"
+
+#: .\templates\registration\password_reset_confirm.html:34
+msgid ""
+"Password change link is no longer valid. Please initiate password change "
+"again"
+msgstr ""
+"Slaptažodžio pakeitimo nuoroda negalioja. Prašome inicijuoti slaptažodžio "
+"keitimą iš naujo"
+
+#: .\templates\registration\password_reset_done.html:5
+msgid "Password reset done"
+msgstr "Slaptažodžio keitimas atliktas"
+
+#: .\templates\registration\password_reset_done.html:11
+msgid "Password reset link sent to your given email address"
+msgstr "Slaptažodžio pakeitimo nuorodą išsiuntėme jums elektroniniu paštu"
+
+#: .\templates\registration\password_reset_email.html:3
+msgid "Hello"
+msgstr "Labas"
+
+#: .\templates\registration\password_reset_email.html:5
+msgid ""
+"We received form for password reset. If you send it click the link below"
+msgstr ""
+"Mums atsiuntė užklausą slaptažodio keitimui. Jeigu tai buvote Jūs, spauskite "
+"nuorodą žemiau"
+
+#: .\templates\registration\password_reset_form.html:5
+msgid "Password reset"
+msgstr "Slaptažodžio keitimas"
+
+#: .\templates\registration\password_reset_form.html:16
+msgid "Enter your password recovery email"
+msgstr "Įveskite elektroninio pašto adresą slaptažodžio pakeitimui"
+
+#: .\templates\registration\password_reset_form.html:19
+msgid "Reset password"
+msgstr "Pakeisti slaptažodį"
+
+#: .\templates\search_bills.html:5
+msgid "Invoice search results"
+msgstr "Sąskaitų - faktūrų paieškos rezultatai"
+
+#: .\templates\search_bills.html:9 .\templates\search_clients.html:9
+#: .\templates\search_employee_tools.html:8
+#: .\templates\search_managed_tasks.html:8 .\templates\search_objects.html:9
+#: .\templates\search_received_tasks.html:8 .\templates\search_tools.html:9
+msgid "Search"
+msgstr "Paieškos"
+
+#: .\templates\search_bills.html:9 .\templates\search_clients.html:9
+#: .\templates\search_employee_tools.html:8
+#: .\templates\search_managed_tasks.html:8 .\templates\search_objects.html:9
+#: .\templates\search_received_tasks.html:8 .\templates\search_tools.html:9
+msgid "results"
+msgstr "rezultatai"
+
+#: .\templates\search_bills.html:39
+msgid "No invoices for"
+msgstr "Nėra sąskaitų - faktūrų"
+
+#: .\templates\search_bills.html:39 .\templates\search_clients.html:33
+#: .\templates\search_employee_tools.html:30
+#: .\templates\search_managed_tasks.html:30 .\templates\search_objects.html:31
+#: .\templates\search_received_tasks.html:32 .\templates\search_tools.html:33
+msgid "query"
+msgstr "užklausai"
+
+#: .\templates\search_clients.html:5
+msgid "Client search results"
+msgstr "Užsakovų paieškos rezultatai"
+
+#: .\templates\search_clients.html:33
+msgid "No clients for"
+msgstr "Nėra užsakovų"
+
+#: .\templates\search_employee_tools.html:5
+msgid "My tools search results"
+msgstr "Mano įrankių paieškos rezultatai"
+
+#: .\templates\search_employee_tools.html:30
+msgid "No taken tools for"
+msgstr "Nėra paimtų įrankių"
+
+#: .\templates\search_managed_tasks.html:5
+msgid "Managed tasks search results"
+msgstr "Paskirtų užduočių paieškos rezultatai"
+
+#: .\templates\search_managed_tasks.html:30
+msgid "No managed tasks for"
+msgstr "Nėra paskirtų užduočių"
+
+#: .\templates\search_objects.html:5
+msgid "Construction object search results"
+msgstr "Statybų objektų paieškos rezultatai"
+
+#: .\templates\search_objects.html:31
+msgid "No construction objects for"
+msgstr "Nėra statybų objektų"
+
+#: .\templates\search_received_tasks.html:5
+msgid "Received tasks search results"
+msgstr "Gautų užduočių paieškos rezultatai"
+
+#: .\templates\search_received_tasks.html:32
+msgid "No received tasks for"
+msgstr "Nėra gautų užduočių"
+
+#: .\templates\search_tools.html:5
+msgid "Tool search results"
+msgstr "Įrankių paieškos rezultatai"
+
+#: .\templates\search_tools.html:17 .\templates\tools_list.html:23
+msgid "Availability"
+msgstr "Prieinamumas"
+
+#: .\templates\search_tools.html:18 .\templates\tools_list.html:24
+msgid "Taken by"
+msgstr "Paėmęs darbuotojas"
+
+#: .\templates\search_tools.html:33
+msgid "No tools for"
+msgstr "Nėra įrankių"
+
+#: .\templates\start.html:5
+msgid "Start"
+msgstr "Pradžia"
+
+#: .\templates\start.html:9
+msgid "Please choose from the following menu options"
+msgstr "Pasirinkite iš pateiktų meniu parinkčių"
+
+#: .\templates\start.html:11 .\templates\tools_list.html:5
+msgid "Tools"
+msgstr "Įrankiai"
+
+#: .\templates\start.html:12
+msgid "Add tool"
+msgstr "Pridėti įrankį"
+
+#: .\templates\start.html:14
+msgid "Add task"
+msgstr "Pridėti užduotį"
+
+#: .\templates\start.html:18
+msgid "Add construction object"
+msgstr "Pridėti statybų objektą"
+
+#: .\templates\start.html:20
+msgid "Add invoice"
+msgstr "Pridėti sąskaitą - faktūrą"
+
+#: .\templates\start.html:22
+msgid "Add client"
+msgstr "Pridėti užsakovą"
+
+#: .\templates\start.html:25
+msgid "Welcome to our website"
+msgstr "Sveiki atvykę į mūsų tinklalapį"
+
+#: .\templates\start.html:27
+msgid "Please"
+msgstr "Prašome"
+
+#: .\templates\start.html:27
+msgid "log in"
+msgstr "prisijungti"
+
+#: .\templates\start.html:27
+msgid "to access the website services"
+msgstr "ir naudotis tinklapio paslaugomis"
+
+#: .\templates\task_detail.html:18
+msgid "Task manager"
+msgstr "Užduotį paskyrė"
+
+#: .\templates\task_detail.html:22
+msgid "Task date"
+msgstr "Data"
+
+#: .\templates\task_detail.html:26
+msgid "Task details"
+msgstr "Aprašymas"
+
+#: .\templates\task_detail.html:30
+msgid "Assigned to"
+msgstr "Paskirta"
+
+#: .\templates\task_detail.html:47 .\templates\task_detail.html:52
+msgid "Edit task"
+msgstr "Redaguoti užduotį"
+
+#: .\templates\tool_detail.html:26
+msgid "Tool inventory number"
+msgstr "Inventorinis numeris"
+
+#: .\templates\tool_detail.html:34
+msgid "In possession"
+msgstr "Paėmė"
+
+#: .\templates\tool_detail.html:47
+msgid "Edit tool"
+msgstr "Redaguoti įrankį"
+
+#: .\templates\tools_list.html:9
+msgid "Tool list"
+msgstr "Įrankiai"
+
+#: .\templates\tools_list.html:12
+msgid "Tool search"
+msgstr "Ieškoti įrankių"
+
+#: .\templates\tools_list.html:39
+msgid "No tools at the moment"
+msgstr "Nėra įrankių"
+
+#~ msgid "My tasks"
+#~ msgstr "Mano užduotys"
+
+#~ msgid "Invoice No."
+#~ msgstr "S. f. numeris"
+
+#~ msgid "Assigned tasks"
+#~ msgstr "Gautos užduotys"
+
+#~ msgid "Task search"
+#~ msgstr "Ieškoti užduočių"
+
+#~ msgid "Bill search results"
+#~ msgstr "Sąskaitų - faktūrų paieškos rezultatai"
+
+#~ msgid "Invoice number"
+#~ msgstr "Sąskaitos - faktūros numeris"
+
+#~ msgid "Įveskite elektroninio pašto adresą"
+#~ msgstr "Įveskite elektroninio pašto adresą"
+
+#~ msgid "No created tasks"
+#~ msgstr "Nėra sukurtų užduočių"
