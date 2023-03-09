@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-08 14:20+0200\n"
-"PO-Revision-Date: 2023-03-08 15:02+0200\n"
+"POT-Creation-Date: 2023-03-09 10:32+0200\n"
+"PO-Revision-Date: 2023-03-09 10:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -40,7 +40,7 @@ msgstr "Užsakovas"
 
 #: .\models.py:16 .\models.py:59 .\models.py:125
 #: .\templates\construction_object_detail.html:5
-#: .\templates\tool_detail.html:38
+#: .\templates\tool_detail.html:39
 msgid "Construction object"
 msgstr "Statybų objektas"
 
@@ -71,7 +71,7 @@ msgstr "Atšaukta"
 #: .\templates\employee_received_tasks_list.html:24
 #: .\templates\search_bills.html:20 .\templates\search_managed_tasks.html:16
 #: .\templates\search_received_tasks.html:17 .\templates\task_detail.html:38
-#: .\templates\tool_detail.html:30
+#: .\templates\tool_detail.html:31
 msgid "Status"
 msgstr "Būsena"
 
@@ -109,7 +109,7 @@ msgstr "Vadovas"
 
 #: .\models.py:55 .\models.py:104 .\models.py:142
 #: .\templates\construction_object_detail.html:42
-#: .\templates\task_detail.html:59 .\templates\tool_detail.html:54
+#: .\templates\task_detail.html:59 .\templates\tool_detail.html:55
 msgid "Comments"
 msgstr "Komentarai"
 
@@ -325,17 +325,17 @@ msgid "Construction object details"
 msgstr "Statybų objekto duomenys"
 
 #: .\templates\construction_object_detail.html:51
-#: .\templates\task_detail.html:68 .\templates\tool_detail.html:63
+#: .\templates\task_detail.html:68 .\templates\tool_detail.html:64
 msgid "No comments yet"
 msgstr "Nėra komentarų"
 
 #: .\templates\construction_object_detail.html:57
-#: .\templates\task_detail.html:74 .\templates\tool_detail.html:69
+#: .\templates\task_detail.html:74 .\templates\tool_detail.html:70
 msgid "Post comment"
 msgstr "Rašyti komentarą"
 
 #: .\templates\construction_object_detail.html:62
-#: .\templates\task_detail.html:79 .\templates\tool_detail.html:74
+#: .\templates\task_detail.html:79 .\templates\tool_detail.html:75
 msgid "Post"
 msgstr "Paskelbti"
 
@@ -654,8 +654,8 @@ msgid "Add client"
 msgstr "Pridėti užsakovą"
 
 #: .\templates\start.html:25
-msgid "Welcome to our website"
-msgstr "Sveiki atvykę į mūsų tinklalapį"
+msgid "Welcome to our Tools and Tasks website"
+msgstr "Sveiki atvykę į mūsų tinklalapį \"Įrankiai ir užduotys\""
 
 #: .\templates\start.html:27
 msgid "Please"
@@ -667,7 +667,7 @@ msgstr "prisijungti"
 
 #: .\templates\start.html:27
 msgid "to access the website services"
-msgstr "ir naudotis tinklapio paslaugomis"
+msgstr "ir naudotis tinklalapio paslaugomis"
 
 #: .\templates\task_detail.html:18
 msgid "Task manager"
@@ -689,15 +689,15 @@ msgstr "Paskirta"
 msgid "Edit task"
 msgstr "Redaguoti užduotį"
 
-#: .\templates\tool_detail.html:26
+#: .\templates\tool_detail.html:27
 msgid "Tool inventory number"
 msgstr "Inventorinis numeris"
 
-#: .\templates\tool_detail.html:34
+#: .\templates\tool_detail.html:35
 msgid "In possession"
 msgstr "Paėmė"
 
-#: .\templates\tool_detail.html:47
+#: .\templates\tool_detail.html:48
 msgid "Edit tool"
 msgstr "Redaguoti įrankį"
 
