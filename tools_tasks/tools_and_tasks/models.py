@@ -154,6 +154,12 @@ class Tool(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+    def ready(self):
+        if self.status == 'a':
+            return True
+        else:
+            return False
+
     def display_tool_comments(self):
         return ' | '.join(comment.text for comment in self.tool_comments.all())
 
