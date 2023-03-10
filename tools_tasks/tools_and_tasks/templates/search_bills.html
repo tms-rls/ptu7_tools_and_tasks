@@ -23,15 +23,50 @@
         </thead>
         <tbody>
             {% for bill in bills_list %}
-                <tr>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.date }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.number }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.client }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.construction_object }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.amount }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.get_status_display }}</a></td>
-                    <td style="padding:10px"><a href="{% url 'bill_detail_view' bill.pk %}">{{ bill.payment_date }}</a></td>
-                </tr>
+                    <tr>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.date }}
+                            </a>
+                        </td>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.number }}
+                            </a>
+                        </td>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.client }}
+                            </a>
+                        </td>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.construction_object }}
+                            </a>
+                        </td>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.amount }}
+                            </a>
+                        </td>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.get_status_display }}
+                            </a>
+                        </td>
+                        <td style="padding:10px">
+                            <a href="{% url 'bill_detail_view' bill.pk %}"
+                               style="{% if bill.deadline_overdue and bill.unpaid %}color: red{% endif %}{% if bill.paid %}color: lime{% endif %}">
+                                {{ bill.payment_date }}
+                            </a>
+                        </td>
+                    </tr>
             {% endfor %}
         </tbody>
     </table>

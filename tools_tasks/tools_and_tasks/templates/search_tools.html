@@ -21,10 +21,10 @@
         <tbody>
           {% for tool in tools_list %}
             <tr>
-              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.title }}</a></td>
-              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.inventory_number }}</a></td>
-              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.get_status_display }}</a></td>
-              <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}">{{ tool.employee }}</a></td>
+                <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.title }}</a></td>
+                <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.inventory_number }}</a></td>
+                <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.get_status_display }}</a></td>
+                <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.employee }}</a></td>
             </tr>
           {% endfor %}
         </tbody>
