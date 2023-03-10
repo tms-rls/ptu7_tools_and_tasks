@@ -27,6 +27,18 @@ class Bill(models.Model):
     class Meta:
         ordering = ['payment_date']
 
+    def deadline_overdue(self):
+        if self.payment_date:
+            return datetime.date.today() > self.payment_date
+        else:
+            return False
+
+    def unpaid(self):
+        if self.status == 'u':
+            return True
+        else:
+            return False
+
     def __str__(self):
         return f'Date: {self.date},  Number: {self.number}, Amount: {self.amount}'
 
