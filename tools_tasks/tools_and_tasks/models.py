@@ -39,6 +39,12 @@ class Bill(models.Model):
         else:
             return False
 
+    def paid(self):
+        if self.status == 'p':
+            return True
+        else:
+            return False
+
     def __str__(self):
         return f'Date: {self.date},  Number: {self.number}, Amount: {self.amount}'
 
