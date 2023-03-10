@@ -30,28 +30,32 @@
                   <td style="padding:10px">
                       <a href="{% url 'task_detail_view' task.pk %}"
                          style="{% if task.deadline_overdue and task.unfinished %}color: red{% endif %}
-                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}">
+                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}
+                         {% if task.finished %}color: lime{% endif %}">
                           {{ task.title }}
                       </a>
                   </td>
                   <td style="padding:10px">
                       <a href="{% url 'task_detail_view' task.pk %}"
                          style="{% if task.deadline_overdue and task.unfinished %}color: red{% endif %}
-                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}">
+                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}
+                         {% if task.finished %}color: lime{% endif %}">
                           {{ task.manager }}
                       </a>
                   </td>
                   <td style="padding:10px">
                       <a href="{% url 'task_detail_view' task.pk %}"
                          style="{% if task.deadline_overdue and task.unfinished %}color: red{% endif %}
-                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}">
+                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}
+                         {% if task.finished %}color: lime{% endif %}">
                           {{ task.deadline }}
                       </a>
                   </td>
                   <td style="padding:10px">
                       <a href="{% url 'task_detail_view' task.pk %}"
                          style="{% if task.deadline_overdue and task.unfinished %}color: red{% endif %}
-                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}">
+                         {% if task.new and not task.deadline_overdue%}color: yellow{% endif %}
+                         {% if task.finished %}color: lime{% endif %}">
                           {{ task.get_status_display }}
                       </a>
                   </td>
