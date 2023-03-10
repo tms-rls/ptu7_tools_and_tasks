@@ -107,8 +107,14 @@ class Task(models.Model):
         else:
             return False
 
-    def not_finished(self):
+    def unfinished(self):
         if self.status == 'a' or self.status == 'p':
+            return True
+        else:
+            return False
+
+    def new(self):
+        if self.status == 'a':
             return True
         else:
             return False
