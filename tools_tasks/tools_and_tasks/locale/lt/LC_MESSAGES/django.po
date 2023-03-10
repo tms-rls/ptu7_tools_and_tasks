@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-09 10:32+0200\n"
-"PO-Revision-Date: 2023-03-09 10:37+0200\n"
+"PO-Revision-Date: 2023-03-10 10:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -611,7 +611,7 @@ msgstr "Įrankių paieškos rezultatai"
 
 #: .\templates\search_tools.html:17 .\templates\tools_list.html:23
 msgid "Availability"
-msgstr "Prieinamumas"
+msgstr "Būsena"
 
 #: .\templates\search_tools.html:18 .\templates\tools_list.html:24
 msgid "Taken by"

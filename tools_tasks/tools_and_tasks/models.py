@@ -95,6 +95,12 @@ class Task(models.Model):
         else:
             return False
 
+    def not_finished(self):
+        if self.status == 'a' or self.status == 'p':
+            return True
+        else:
+            return False
+
     def __str__(self):
         return f'{self.title}'
 
