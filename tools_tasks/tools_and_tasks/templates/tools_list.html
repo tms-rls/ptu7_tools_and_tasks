@@ -22,6 +22,7 @@
                 <th style="padding:10px">{% trans "Inventory number" %}</th>
                 <th style="padding:10px">{% trans "Availability" %}</th>
                 <th style="padding:10px">{% trans "Taken by" %}</th>
+                <th style="padding:10px">{% trans "Is at" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                     <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.inventory_number }}</a></td>
                     <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.get_status_display }}</a></td>
                     <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.employee }}</a></td>
+                    <td style="padding:10px"><a href="{% url 'tool_detail_view' tool.pk %}" style="{% if tool.ready %}color: lime{% endif %}">{{ tool.construction_object }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>

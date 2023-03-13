@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-09 10:32+0200\n"
-"PO-Revision-Date: 2023-03-10 10:02+0200\n"
+"POT-Creation-Date: 2023-03-13 21:59+0200\n"
+"PO-Revision-Date: 2023-03-13 21:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -20,7 +20,7 @@ msgstr ""
 "1 : n % 1 != 0 ? 2: 3);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: .\models.py:13 .\models.py:63 .\models.py:75 .\models.py:111 .\models.py:149
+#: .\models.py:13 .\models.py:81 .\models.py:93 .\models.py:147 .\models.py:191
 #: .\templates\bill_detail.html:18 .\templates\bills_list.html:20
 #: .\templates\search_bills.html:15
 msgid "Date"
@@ -30,7 +30,7 @@ msgstr "Data"
 msgid "Number of bill"
 msgstr "Sąskaitos - faktūros numeris"
 
-#: .\models.py:15 .\models.py:47 .\templates\bills_list.html:22
+#: .\models.py:15 .\models.py:65 .\templates\bills_list.html:22
 #: .\templates\client_detail.html:5
 #: .\templates\construction_object_detail.html:22
 #: .\templates\construction_objects_list.html:22
@@ -38,7 +38,7 @@ msgstr "Sąskaitos - faktūros numeris"
 msgid "Client"
 msgstr "Užsakovas"
 
-#: .\models.py:16 .\models.py:59 .\models.py:125
+#: .\models.py:16 .\models.py:77 .\models.py:161
 #: .\templates\construction_object_detail.html:5
 #: .\templates\tool_detail.html:39
 msgid "Construction object"
@@ -61,11 +61,11 @@ msgstr "Apmokėta"
 msgid "Unpaid"
 msgstr "Neapmokėta"
 
-#: .\models.py:23 .\models.py:85
+#: .\models.py:23 .\models.py:103
 msgid "Canceled"
 msgstr "Atšaukta"
 
-#: .\models.py:25 .\models.py:87 .\models.py:133
+#: .\models.py:25 .\models.py:105 .\models.py:169
 #: .\templates\bill_detail.html:42 .\templates\bills_list.html:25
 #: .\templates\employee_managed_tasks_list.html:23
 #: .\templates\employee_received_tasks_list.html:24
@@ -75,24 +75,24 @@ msgstr "Atšaukta"
 msgid "Status"
 msgstr "Būsena"
 
-#: .\models.py:35
+#: .\models.py:53
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: .\models.py:36 .\templates\client_detail.html:22
+#: .\models.py:54 .\templates\client_detail.html:22
 #: .\templates\clients_list.html:22 .\templates\search_clients.html:16
 msgid "Contact phone"
 msgstr "Kontaktinis tel. numeris"
 
-#: .\models.py:37
+#: .\models.py:55
 msgid "Contact email"
 msgstr "Kontaktinis el. paštas"
 
-#: .\models.py:38
+#: .\models.py:56
 msgid "Contact address"
 msgstr "Adresas korespondencijai"
 
-#: .\models.py:45 .\templates\client_detail.html:30
+#: .\models.py:63 .\templates\client_detail.html:30
 #: .\templates\clients_list.html:24
 #: .\templates\construction_object_detail.html:18
 #: .\templates\construction_objects_list.html:21
@@ -100,29 +100,29 @@ msgstr "Adresas korespondencijai"
 msgid "Address"
 msgstr "Adresas"
 
-#: .\models.py:46 .\models.py:74 .\templates\construction_object_detail.html:26
+#: .\models.py:64 .\models.py:92 .\templates\construction_object_detail.html:26
 #: .\templates\construction_objects_list.html:23
 #: .\templates\employee_received_tasks_list.html:22
 #: .\templates\search_objects.html:17 .\templates\search_received_tasks.html:15
 msgid "Manager"
 msgstr "Vadovas"
 
-#: .\models.py:55 .\models.py:104 .\models.py:142
+#: .\models.py:73 .\models.py:140 .\models.py:184
 #: .\templates\construction_object_detail.html:42
 #: .\templates\task_detail.html:59 .\templates\tool_detail.html:55
 msgid "Comments"
 msgstr "Komentarai"
 
-#: .\models.py:62 .\models.py:79 .\models.py:110 .\models.py:124
-#: .\models.py:148
+#: .\models.py:80 .\models.py:97 .\models.py:146 .\models.py:160
+#: .\models.py:190
 msgid "Employee"
 msgstr "Darbuotojas"
 
-#: .\models.py:64 .\models.py:112 .\models.py:150
+#: .\models.py:82 .\models.py:148 .\models.py:192
 msgid "Comment"
 msgstr "Komentaras"
 
-#: .\models.py:76 .\models.py:108
+#: .\models.py:94 .\models.py:144
 #: .\templates\employee_managed_tasks_list.html:21
 #: .\templates\employee_received_tasks_list.html:21
 #: .\templates\search_managed_tasks.html:14
@@ -130,55 +130,55 @@ msgstr "Komentaras"
 msgid "Task"
 msgstr "Užduotis"
 
-#: .\models.py:77
+#: .\models.py:95
 msgid "Description"
 msgstr "Aprašymas"
 
-#: .\models.py:78
+#: .\models.py:96
 msgid "Accomplish till"
 msgstr "Atlikti iki"
 
-#: .\models.py:82
+#: .\models.py:100
 msgid "Assigned"
 msgstr "Paskirta"
 
-#: .\models.py:83
+#: .\models.py:101
 msgid "In progress"
 msgstr "Vykdoma"
 
-#: .\models.py:84
+#: .\models.py:102
 msgid "Finished"
 msgstr "Pabaigta"
 
-#: .\models.py:122 .\models.py:146 .\templates\employee_tools_list.html:21
+#: .\models.py:158 .\models.py:188 .\templates\employee_tools_list.html:21
 #: .\templates\search_employee_tools.html:14 .\templates\search_tools.html:15
 #: .\templates\tool_detail.html:5 .\templates\tools_list.html:21
 msgid "Tool"
 msgstr "Įrankis"
 
-#: .\models.py:123 .\templates\employee_tools_list.html:22
+#: .\models.py:159 .\templates\employee_tools_list.html:22
 #: .\templates\search_employee_tools.html:15 .\templates\search_tools.html:16
 #: .\templates\tools_list.html:22
 msgid "Inventory number"
 msgstr "Inventorinis numeris"
 
-#: .\models.py:128
+#: .\models.py:164
 msgid "Available"
 msgstr "Galima paimti"
 
-#: .\models.py:129
+#: .\models.py:165
 msgid "Broken"
 msgstr "Sugedęs"
 
-#: .\models.py:130
+#: .\models.py:166
 msgid "In repair"
 msgstr "Taisomas"
 
-#: .\models.py:131
+#: .\models.py:167
 msgid "Taken"
 msgstr "Paimta"
 
-#: .\models.py:134
+#: .\models.py:170
 msgid "Picture"
 msgstr "Paveikslėlis"
 
@@ -240,8 +240,8 @@ msgstr "Sąskaitos - faktūros"
 msgid "Invoice search"
 msgstr "Ieškoti sąskaitų - faktūrų"
 
-#: .\templates\bills_list.html:23 .\templates\employee_tools_list.html:23
-#: .\templates\search_bills.html:18 .\templates\search_employee_tools.html:16
+#: .\templates\bills_list.html:23 .\templates\search_bills.html:18
+#: .\templates\search_employee_tools.html:16
 msgid "Const. object"
 msgstr "Stat. objektas"
 
@@ -249,47 +249,47 @@ msgstr "Stat. objektas"
 msgid "Payment date"
 msgstr "Apmokėjimo data"
 
-#: .\templates\bills_list.html:44
+#: .\templates\bills_list.html:79
 msgid "No bills at the moment"
 msgstr "Nėra sąskaitų - faktūrų"
 
-#: .\templates\bills_list.html:53 .\templates\clients_list.html:48
+#: .\templates\bills_list.html:88 .\templates\clients_list.html:48
 #: .\templates\construction_objects_list.html:45
-#: .\templates\employee_managed_tasks_list.html:44
-#: .\templates\employee_received_tasks_list.html:46
-#: .\templates\employee_tools_list.html:43 .\templates\tools_list.html:47
+#: .\templates\employee_managed_tasks_list.html:65
+#: .\templates\employee_received_tasks_list.html:74
+#: .\templates\employee_tools_list.html:43 .\templates\tools_list.html:49
 msgid "First"
 msgstr "Pirmas"
 
-#: .\templates\bills_list.html:54 .\templates\clients_list.html:49
+#: .\templates\bills_list.html:89 .\templates\clients_list.html:49
 #: .\templates\construction_objects_list.html:46
-#: .\templates\employee_managed_tasks_list.html:45
-#: .\templates\employee_received_tasks_list.html:47
-#: .\templates\employee_tools_list.html:44 .\templates\tools_list.html:48
+#: .\templates\employee_managed_tasks_list.html:66
+#: .\templates\employee_received_tasks_list.html:75
+#: .\templates\employee_tools_list.html:44 .\templates\tools_list.html:50
 msgid "back"
 msgstr "atgal"
 
-#: .\templates\bills_list.html:58 .\templates\clients_list.html:53
+#: .\templates\bills_list.html:93 .\templates\clients_list.html:53
 #: .\templates\construction_objects_list.html:50
-#: .\templates\employee_managed_tasks_list.html:49
-#: .\templates\employee_received_tasks_list.html:51
-#: .\templates\employee_tools_list.html:48 .\templates\tools_list.html:52
+#: .\templates\employee_managed_tasks_list.html:70
+#: .\templates\employee_received_tasks_list.html:79
+#: .\templates\employee_tools_list.html:48 .\templates\tools_list.html:54
 msgid "from"
 msgstr "iš"
 
-#: .\templates\bills_list.html:62 .\templates\clients_list.html:57
+#: .\templates\bills_list.html:97 .\templates\clients_list.html:57
 #: .\templates\construction_objects_list.html:54
-#: .\templates\employee_managed_tasks_list.html:53
-#: .\templates\employee_received_tasks_list.html:55
-#: .\templates\employee_tools_list.html:52 .\templates\tools_list.html:56
+#: .\templates\employee_managed_tasks_list.html:74
+#: .\templates\employee_received_tasks_list.html:83
+#: .\templates\employee_tools_list.html:52 .\templates\tools_list.html:58
 msgid "forward"
 msgstr "pirmyn"
 
-#: .\templates\bills_list.html:63 .\templates\clients_list.html:58
+#: .\templates\bills_list.html:98 .\templates\clients_list.html:58
 #: .\templates\construction_objects_list.html:55
-#: .\templates\employee_managed_tasks_list.html:54
-#: .\templates\employee_received_tasks_list.html:56
-#: .\templates\employee_tools_list.html:53 .\templates\tools_list.html:57
+#: .\templates\employee_managed_tasks_list.html:75
+#: .\templates\employee_received_tasks_list.html:84
+#: .\templates\employee_tools_list.html:53 .\templates\tools_list.html:59
 msgid "Last"
 msgstr "Paskutinis"
 
@@ -368,7 +368,7 @@ msgstr "Ieškoti paskirtų užduočių"
 msgid "Deadline"
 msgstr "Atlikti iki"
 
-#: .\templates\employee_managed_tasks_list.html:37
+#: .\templates\employee_managed_tasks_list.html:58
 msgid "No managed tasks at the moment"
 msgstr "Nėra paskirtų užduočių"
 
@@ -381,7 +381,7 @@ msgstr "Gautos užduotys"
 msgid "Search received tasks"
 msgstr "Ieškoti gautų užduočių"
 
-#: .\templates\employee_received_tasks_list.html:39
+#: .\templates\employee_received_tasks_list.html:67
 msgid "No received tasks at the moment"
 msgstr "Nėra gautų užduočių"
 
@@ -396,6 +396,11 @@ msgstr "Mano paimti įrankiai"
 #: .\templates\employee_tools_list.html:12
 msgid "Search my tools"
 msgstr "Ieškoti mano įrankių"
+
+#: .\templates\employee_tools_list.html:23 .\templates\search_tools.html:19
+#: .\templates\tools_list.html:25
+msgid "Is at"
+msgstr "Yra adresu"
 
 #: .\templates\employee_tools_list.html:37
 msgid "No taken tools"
@@ -554,14 +559,14 @@ msgstr "Paieškos"
 msgid "results"
 msgstr "rezultatai"
 
-#: .\templates\search_bills.html:39
+#: .\templates\search_bills.html:74
 msgid "No invoices for"
 msgstr "Nėra sąskaitų - faktūrų"
 
-#: .\templates\search_bills.html:39 .\templates\search_clients.html:33
+#: .\templates\search_bills.html:74 .\templates\search_clients.html:33
 #: .\templates\search_employee_tools.html:30
-#: .\templates\search_managed_tasks.html:30 .\templates\search_objects.html:31
-#: .\templates\search_received_tasks.html:32 .\templates\search_tools.html:33
+#: .\templates\search_managed_tasks.html:51 .\templates\search_objects.html:31
+#: .\templates\search_received_tasks.html:60 .\templates\search_tools.html:35
 msgid "query"
 msgstr "užklausai"
 
@@ -585,7 +590,7 @@ msgstr "Nėra paimtų įrankių"
 msgid "Managed tasks search results"
 msgstr "Paskirtų užduočių paieškos rezultatai"
 
-#: .\templates\search_managed_tasks.html:30
+#: .\templates\search_managed_tasks.html:51
 msgid "No managed tasks for"
 msgstr "Nėra paskirtų užduočių"
 
@@ -601,7 +606,7 @@ msgstr "Nėra statybų objektų"
 msgid "Received tasks search results"
 msgstr "Gautų užduočių paieškos rezultatai"
 
-#: .\templates\search_received_tasks.html:32
+#: .\templates\search_received_tasks.html:60
 msgid "No received tasks for"
 msgstr "Nėra gautų užduočių"
 
@@ -617,7 +622,7 @@ msgstr "Būsena"
 msgid "Taken by"
 msgstr "Paėmęs darbuotojas"
 
-#: .\templates\search_tools.html:33
+#: .\templates\search_tools.html:35
 msgid "No tools for"
 msgstr "Nėra įrankių"
 
@@ -709,7 +714,7 @@ msgstr "Įrankiai"
 msgid "Tool search"
 msgstr "Ieškoti įrankių"
 
-#: .\templates\tools_list.html:39
+#: .\templates\tools_list.html:41
 msgid "No tools at the moment"
 msgstr "Nėra įrankių"
 
